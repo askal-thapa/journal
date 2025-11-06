@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Askhal Thapa's Learning Journal - Weekly Entries</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="navigation"></header>
+
+    <main>
+        <section class="journal-entries">
+            <h1>My Weekly Learning Log</h1>
+            <p style="margin-bottom: 20px;">Documenting my progress, reflections, and key takeaways from the Mobile Application Development unit.</p>
+            
+            <!-- Statistics Cards -->
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Weeks Completed</div>
+                </div>
+            </div>
+
+            <!-- Search Box -->
+            <div class="search-container">
+                <input type="text" class="search-box" placeholder="Search journal entries..." id="searchInput">
+                <span class="search-icon">🔍</span>
+            </div>
+
+            <article class="week-entry fade-in" style="animation-delay: 0.1s;">
+                <h2>Week 2: Frontend Fundamentals (HTML/CSS)<span class="reading-time">3 min read</span></h2>
+                <p style="font-style: italic; color: var(--text-secondary);">Posted: October 27, 2025</p>
+                
+                <!-- Progress Bar -->
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 85%;"></div>
+                </div>
+                
+                <h3>Reflection Questions</h3>
+                <ol class="reflection-list">
+                    <li><b>Approach to Mobile-First Design:</b> Started with narrow layout and used `min-width` media queries to progressively enhance for larger screens.</li>
+                    <li><b>Most Useful Concept:</b> Flexbox for aligning complex navigation elements and creating responsive layouts without complex float-based solutions.</li>
+                    <li><b>Most Challenging Concept:</b> Managing margin collapse and understanding CSS selector precedence, especially when dealing with specificity conflicts.</li>
+                </ol>
+                
+                <h3>Technical Progress</h3>
+                <p>Successfully created the four-page structure and implemented a responsive layout that adapts seamlessly between mobile phones and desktop screens. The mobile-first approach proved highly effective in creating cleaner, more maintainable CSS.</p>
+                
+                <h3>Key Takeaways</h3>
+                <ul class="reflection-list">
+                    <li>Mobile-first design leads to better performance</li>
+                    <li>CSS Grid and Flexbox complement each other perfectly</li>
+                    <li>Semantic HTML improves accessibility and SEO</li>
+                </ul>
+            </article>
+
+            <article class="week-entry fade-in" style="animation-delay: 0.2s;">
+                <h2>Week 3: JavaScript Basics & Theme Toggle<span class="reading-time">4 min read</span></h2>
+                <p style="font-style: italic; color: var(--text-secondary);">Posted: November 2, 2025</p>
+
+                <!-- Progress Bar -->
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 92%;"></div>
+                </div>
+
+                <h3>What I learned</h3>
+                <ul class="reflection-list">
+                    <li><b>DOM manipulation:</b> Selecting elements with querySelector, changing innerHTML, and toggling classes dynamically.</li>
+                    <li><b>Event handling:</b> Adding click listeners to respond to user actions and creating interactive experiences.</li>
+                    <li><b>localStorage:</b> Saving user preferences so choices persist across browser sessions and page reloads.</li>
+                    <li><b>Progressive enhancement:</b> Injecting shared navigation from one JS file to keep HTML DRY and maintainable.</li>
+                </ul>
+
+                <h3>What I built</h3>
+                <p>I used JavaScript to add a sophisticated dark/light theme toggle system. The script dynamically injects navigation into each page, renders an elegant theme button, toggles a <code>dark-mode</code> class on the <code>body</code>, and saves the user's choice to <code>localStorage</code>. The implementation includes smooth transitions and accessibility features.</p>
+
+                <h3>Code Implementation</h3>
+                <p>The JavaScript is modular and well-structured, with separate functions for navigation loading and theme switching. Event listeners are properly bound, and the code follows modern ES6+ practices.</p>
+
+                <h3>Reflection</h3>
+                <p>This task demonstrated how a few well-crafted lines of JavaScript can dramatically enhance user experience. It reinforced the importance of accessibility (aria-labels), progressive enhancement, and state persistence in modern web development.</p>
+            </article>
+
+            <article class="week-entry fade-in" style="animation-delay: 0.3s;">
+                <h2>Week 4: Advanced JavaScript & PWA Features<span class="reading-time">5 min read</span></h2>
+                <p style="font-style: italic; color: var(--text-secondary);">Posted: November 9, 2025</p>
+
+                <!-- Progress Bar -->
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 78%;"></div>
+                </div>
+
+                <h3>Progressive Web App Implementation</h3>
+                <ul class="reflection-list">
+                    <li><b>Service Workers:</b> Implemented caching strategies for offline functionality</li>
+                    <li><b>Web App Manifest:</b> Created installable app experience with custom icons</li>
+                    <li><b>Responsive Design:</b> Enhanced mobile experience with touch-friendly interactions</li>
+                    <li><b>Performance Optimization:</b> Lazy loading and efficient resource management</li>
+                </ul>
+
+                <h3>Technical Challenges</h3>
+                <p>The most challenging aspect was implementing service workers correctly. Understanding the lifecycle events and cache management strategies required careful study of the PWA specifications and extensive testing across different scenarios.</p>
+
+                <h3>User Experience Enhancements</h3>
+                <p>Added smooth animations, improved loading states, and implemented features like copy-to-clipboard functionality for better user interaction. The app now feels native and responsive across all devices.</p>
+            </article>
+
+            </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Askhal Thapa. All rights reserved.</p>
+    </footer>
+
+    <script src="js/browser.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
