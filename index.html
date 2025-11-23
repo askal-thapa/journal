@@ -10,38 +10,74 @@
 
     <header class="navigation"></header>
 
-    <main>
+    <main class="main-container">
         <section class="hero fade-in">
-            <h1 style="margin-bottom: 10px;">Askal Thapa</h1>
-            <p class="subtitle" style="text-align: center; color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 10px;">BSc Computer Science Student</p>
-            <p style="text-align: center; color: var(--text-secondary); font-style: italic; opacity: 0.8;">University for the Creative Arts, Farnham</p>
-            
-            <div class="profile-image" style="text-align: center; margin: 30px 0;">
-                <img src="images/profile.png" alt="Askal Thapa Profile Picture" style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 4px solid var(--accent-primary); padding: 4px; background: var(--bg-surface);">
+            <div class="hero-content">
+                <h1>Askal Thapa</h1>
+                <p class="subtitle">BSc Computer Science Student</p>
+                <p class="location">🎓 University for the Creative Arts, Farnham</p>
+                
+                <div class="profile-section">
+                    <img src="images/profile.png" alt="Askal Thapa Profile Picture" class="profile-image">
+                </div>
+                
+                <p class="hero-tagline">Building modern, responsive web applications with focus on UX & accessibility</p>
             </div>
         </section>
 
         <section class="purpose-statement fade-in" style="animation-delay: 0.2s;">
-            <h2>The PWA Project</h2>
-            <p>
-                This Progressive Web App serves as a live <b>portfolio</b> and <b>learning log</b> for the FGCT6021 Mobile Application Development unit. It documents my journey through modern web technologies, showcases my technical projects, and demonstrates fundamental front-end skills like <b>mobile-first responsive design</b>, <b>progressive enhancement</b>, and <b>user experience optimization</b>.
-            </p>
-            
-            <div class="progress-bar" style="margin: 20px 0;">
-                <div class="progress-fill" style="width: 88%;"></div>
+            <div class="section-header">
+                <h2>📱 The PWA Project</h2>
+                <p class="section-subtitle">A comprehensive learning journal & portfolio</p>
             </div>
             
-            <p style="margin-top: 15px;">
-                Built with modern web standards including <b>CSS Grid</b>, <b>Flexbox</b>, <b>ES6+ JavaScript</b>, and <b>PWA APIs</b>. Features include dark mode, offline functionality, responsive design, and smooth animations for an enhanced user experience.
-            </p>
+            <div class="content-grid">
+                <article class="info-card">
+                    <h3>📚 Project Overview</h3>
+                    <p>
+                        This Progressive Web App serves as a live <b>portfolio</b> and <b>learning log</b> for the FGCT6021 Mobile Application Development unit. It documents my journey through modern web technologies and demonstrates front-end excellence.
+                    </p>
+                </article>
+                
+                <article class="info-card">
+                    <h3>✨ Key Features</h3>
+                    <ul class="feature-list">
+                        <li>📱 Mobile-first responsive design</li>
+                        <li>🌙 Dark mode with smooth transitions</li>
+                        <li>⚡ PWA with offline functionality</li>
+                        <li>🎨 Modern gradient UI with animations</li>
+                        <li>♿ WCAG accessibility compliant</li>
+                    </ul>
+                </article>
+                
+                <article class="info-card">
+                    <h3>🛠️ Technologies Used</h3>
+                    <ul class="tech-list">
+                        <li><b>Frontend:</b> HTML5, CSS3, ES6+ JavaScript</li>
+                        <li><b>Design:</b> CSS Grid, Flexbox, Custom Properties</li>
+                        <li><b>Backend:</b> Python, JSON file storage</li>
+                        <li><b>PWA:</b> Service Workers, Web Manifest</li>
+                    </ul>
+                </article>
+            </div>
+            
+            <div class="progress-section">
+                <h3>Course Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                </div>
+                <p class="progress-text">5 weeks completed with comprehensive learning & projects</p>
+            </div>
         </section>
         
     </main>
 
-    <footer>
-        <p>&copy; 2025 Askal Thapa. All rights reserved.</p>
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Askal Thapa | Computer Science Student | UCA Farnham</p>
+            <p class="footer-subtitle">Building the web, one project at a time 🚀</p>
+        </div>
     </footer>
-</footer>
 
     <script src="js/script.js"></script>
 </body>

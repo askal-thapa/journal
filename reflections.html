@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Askal Thapa's Learning Journal - Reflections</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="navigation"></header>
+
+    <main class="main-container">
+        <section class="reflections-container">
+            <section class="reflections-header fade-in">
+                <h1>💭 Reflections & Insights</h1>
+                <p>Personal thoughts stored as JSON data and managed with Python</p>
+            </section>
+
+            <section class="stats-section fade-in" id="statsSection" style="animation-delay: 0.1s;">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalReflections">0</div>
+                    <div class="stat-label">Total Reflections</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="totalCategories">0</div>
+                    <div class="stat-label">Categories Used</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="longestReflection">0</div>
+                    <div class="stat-label">Longest Entry (chars)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="avgLength">0</div>
+                    <div class="stat-label">Avg Entry Length</div>
+                </div>
+            </section>
+
+            <section class="export-section fade-in" style="animation-delay: 0.2s;">
+                <button class="refresh-btn" onclick="loadReflections()">🔄 Refresh Data</button>
+                <button class="export-btn" onclick="exportToCSV()">📥 Export to CSV</button>
+            </section>
+
+            <section class="filter-section fade-in" id="filterSection" style="animation-delay: 0.3s;">
+                <button class="filter-btn" data-category="all" onclick="filterCategory('all', this)">📋 All</button>
+            </section>
+
+            <section id="reflectionsContainer" class="reflections-list">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Loading reflections...</p>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Askal Thapa | Computer Science Student | UCA Farnham</p>
+            <p class="footer-subtitle">Week 5: Python & JSON Backend Integration - Reflections</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Global state
+        let allReflections = [];
+        let currentFilter = 'all';
+
+        /**
+         * Load reflections from JSON file
+         */
+        async function loadReflections() {
+            try {
+                const response = await fetch('backend/reflections.json');
+                if (!response.ok) throw new Error('Failed to fetch reflections');
+
+                allReflections = await response.json();
+                updateStats();
+                renderReflections(allReflections);
+                setupFilterButtons();
+            } catch (error) {
+                console.error('Error loading reflections:', error);
+                showEmptyState('Could not load reflections. Make sure backend/reflections.json exists.');
+            }
+        }
+
+        /**
+         * Update statistics section
+         */
+        function updateStats() {
+            const totalReflections = allReflections.length;
+            const categories = new Set(allReflections.map(r => r.category || 'General'));
+            const lengths = allReflections.map(r => (r.text || '').length);
+            const longestLength = lengths.length > 0 ? Math.max(...lengths) : 0;
+            const avgLength = lengths.length > 0 ? Math.round(lengths.reduce((a, b) => a + b, 0) / lengths.length) : 0;
+
+            document.getElementById('totalReflections').textContent = totalReflections;
+            document.getElementById('totalCategories').textContent = categories.size;
+            document.getElementById('longestReflection').textContent = longestLength;
+            document.getElementById('avgLength').textContent = avgLength;
+        }
+
+        /**
+         * Setup filter buttons based on categories
+         */
+        function setupFilterButtons() {
+            const categories = new Set(['All', ...allReflections.map(r => r.category || 'General')]);
+            const filterSection = document.getElementById('filterSection');
+
+            filterSection.innerHTML = '';
+
+            categories.forEach(category => {
+                const btn = document.createElement('button');
+                btn.className = 'filter-btn' + (category === 'All' ? ' active' : '');
+                btn.textContent = category === 'All' ? '📋 All' : `${getCategoryEmoji(category)} ${category}`;
+                btn.onclick = () => filterCategory(category.toLowerCase(), btn);
+                filterSection.appendChild(btn);
+            });
+        }
+
+        /**
+         * Get emoji for category
+         */
+        function getCategoryEmoji(category) {
+            const emojis = {
+                'learning': '📚',
+                'insight': '💡',
+                'challenge': '⚠️',
+                'general': '📝'
+            };
+            return emojis[category.toLowerCase()] || '📌';
+        }
+
+        /**
+         * Filter reflections by category
+         */
+        function filterCategory(category, button) {
+            currentFilter = category;
+
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            button.classList.add('active');
+
+            // Filter and render
+            if (category === 'all') {
+                renderReflections(allReflections);
+            } else {
+                const filtered = allReflections.filter(r => (r.category || 'General').toLowerCase() === category);
+                renderReflections(filtered);
+            }
+        }
+
+        /**
+         * Render reflections to DOM
+         */
+        function renderReflections(reflections) {
+            const container = document.getElementById('reflectionsContainer');
+
+            if (reflections.length === 0) {
+                showEmptyState('No reflections found. Add some reflections using the Python script!');
+                return;
+            }
+
+            container.innerHTML = reflections
+                .sort((a, b) => new Date(b.date) - new Date(a.date))
+                .map((reflection, index) => {
+                    const category = (reflection.category || 'General').toLowerCase();
+                    const date = new Date(reflection.date);
+                    const formattedDate = date.toLocaleDateString('en-US', {
+                        weekday: 'short',
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+
+                    return `
+                        <article class="reflection-card ${category}" style="animation-delay: ${index * 0.05}s">
+                            <div class="reflection-header">
+                                <div class="reflection-date">${formattedDate}</div>
+                                <span class="reflection-category ${category}">${getCategoryEmoji(reflection.category)} ${reflection.category || 'General'}</span>
+                            </div>
+                            <div class="reflection-text">${escapeHtml(reflection.text || '')}</div>
+                        </article>
+                    `;
+                })
+                .join('');
+        }
+
+        /**
+         * Show empty state message
+         */
+        function showEmptyState(message) {
+            document.getElementById('reflectionsContainer').innerHTML = `
+                <div class="empty-state">
+                    <h2>📭 No Reflections Yet</h2>
+                    <p>${message}</p>
+                </div>
+            `;
+        }
+
+        /**
+         * Escape HTML characters for security
+         */
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        /**
+         * Export reflections to CSV
+         */
+        function exportToCSV() {
+            if (allReflections.length === 0) {
+                alert('No reflections to export!');
+                return;
+            }
+
+            let csv = 'Date,Category,Text\n';
+            allReflections.forEach(reflection => {
+                const date = new Date(reflection.date).toLocaleString();
+                const category = reflection.category || 'General';
+                const text = (reflection.text || '').replace(/"/g, '""'); // Escape quotes
+                csv += `"${date}","${category}","${text}"\n`;
+            });
+
+            // Create download link
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `reflections-${new Date().toISOString().split('T')[0]}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }
+
+        // Load reflections on page load
+        document.addEventListener('DOMContentLoaded', loadReflections);
+    </script>
+</body>
+
+</html>

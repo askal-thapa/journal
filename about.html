@@ -9,55 +9,69 @@
 <body>
     <header class="navigation"></header>
 
-    <main>
+    <main class="main-container">
         <section class="about-me">
-            <h1>Askal Thapa - Student Profile</h1>
+            <div class="section-header">
+                <h1>👨‍💻 About Me</h1>
+                <p class="section-subtitle">Computer Science Student | Web Developer | Creative Problem Solver</p>
+            </div>
             
-            <article class="introduction fade-in">
-                <h2>Introduction & Background</h2>
+            <article class="about-card introduction fade-in">
+                <h2>📖 Introduction & Background</h2>
                 <p>
                     I am a dedicated student in the <b>BSc (Hons) Computer Science</b> program at the University for the Creative Arts. My current focus is on building robust, accessible, and user-friendly mobile and web applications using modern development practices and technologies.
                 </p>
                 
-                <div class="progress-bar">
+                <div class="progress-bar" style="margin: 20px 0;">
                     <div class="progress-fill" style="width: 85%;"></div>
                 </div>
+                <p class="progress-text">Growing my skills in full-stack web development</p>
             </article>
 
-            <article class="skills-and-goals fade-in" style="animation-delay: 0.1s;">
-                <h2>Technical Skills & Objectives</h2>
+            <article class="about-card skills-and-goals fade-in" style="animation-delay: 0.1s;">
+                <h2>🎯 Technical Skills & Objectives</h2>
                 <p>My core competencies span modern front-end development with a focus on performance, accessibility, and user experience. I'm passionate about creating applications that work seamlessly across all devices and platforms.</p>
                 
-                <h3>Core Technologies:</h3>
-                <ul class="reflection-list">
-                    <li><b>Frontend:</b> HTML5, CSS3 (Grid, Flexbox), JavaScript ES6+</li>
-                    <li><b>Design:</b> Responsive Web Design, Mobile-First Approach</li>
-                    <li><b>Tools:</b> Git, VS Code, Browser DevTools</li>
-                    <li><b>Concepts:</b> Progressive Enhancement, Web Accessibility (WCAG)</li>
-                </ul>
+                <div class="skills-grid">
+                    <div class="skill-section">
+                        <h3>💻 Core Technologies:</h3>
+                        <ul class="skill-list">
+                            <li>✓ HTML5, CSS3 (Grid, Flexbox)</li>
+                            <li>✓ JavaScript ES6+</li>
+                            <li>✓ Responsive Web Design</li>
+                            <li>✓ Git & Version Control</li>
+                        </ul>
+                    </div>
 
-                <h3>Current Learning Focus:</h3>
-                <ul class="reflection-list">
-                    <li><b>Progressive Web Apps:</b> Service Workers, Web App Manifests</li>
-                    <li><b>Performance Optimization:</b> Lazy loading, Code splitting</li>
-                    <li><b>Modern CSS:</b> Custom Properties, Container Queries</li>
-                    <li><b>JavaScript Frameworks:</b> React, Vue.js fundamentals</li>
-                </ul>
+                    <div class="skill-section">
+                        <h3>📚 Currently Learning:</h3>
+                        <ul class="skill-list">
+                            <li>✓ Progressive Web Apps</li>
+                            <li>✓ Performance Optimization</li>
+                            <li>✓ Modern CSS Techniques</li>
+                            <li>✓ Python Backend Development</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
             
-                <h3>University</h3>
+            <article class="about-card university-section fade-in" style="animation-delay: 0.2s;">
+                <h2>🎓 University & Education</h2>
                 <p>I currently study at the <b>University for the Creative Arts in Farnham</b>, where I'm developing both technical skills and creative problem-solving abilities. The program combines theoretical computer science concepts with practical application development.</p>
                 
-                <div class="about-map" style="margin-top: 20px;">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d77923.01367721712!2d-0.880581980954862!3d51.220386944706696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48742dad1cfba769%3A0x78f847b79c623abe!2sUniversity%20for%20the%20Creative%20Arts!5e0!3m2!1sen!2snp!4v1762449181184!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="map-container" style="margin-top: 25px;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d77923.01367721712!2d-0.880581980954862!3d51.220386944706696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48742dad1cfba769%3A0x78f847b79c623abe!2sUniversity%20for%20the%20Creative%20Arts!5e0!3m2!1sen!2snp!4v1762449181184!5m2!1sen!2snp" width="100%" height="450" style="border:0;border-radius: 12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </article>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Askal Thapa. All rights reserved.</p>
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Askal Thapa | Computer Science Student | UCA Farnham</p>
+            <p class="footer-subtitle">Passionate about creating elegant, accessible web experiences</p>
+        </div>
     </footer>
-</footer>
 
     <script src="js/script.js"></script>
 </body>

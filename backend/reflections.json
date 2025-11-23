@@ -1,0 +1,14 @@
+[
+  {
+    "date": "2025-11-23T14:00:00",
+    "text": "Learned about Python and JSON integration. Created my first backend system using Python to manage JSON data. This is powerful for creating file-based storage without a full database.",
+    "category": "Learning",
+    "id": 1
+  },
+  {
+    "date": "2025-11-23T14:15:00",
+    "text": "Discovered the difference between browser storage and file-based JSON storage. JSON file storage persists on the server side and can be modified by backend scripts, while browser storage is client-side only.",
+    "category": "Insight",
+    "id": 2
+  }
+]

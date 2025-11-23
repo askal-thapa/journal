@@ -3,6 +3,7 @@ const navHTML = `
         <ul class="nav-container">
             <li><a href="index.html" id="nav-home">Home</a></li>
             <li><a href="journal.html" id="nav-journal">Journal</a></li>
+            <li><a href="reflections.html" id="nav-reflections">Reflections</a></li>
             <li><a href="about.html" id="nav-about">About</a></li>
             <li><a href="projects.html" id="nav-projects">Projects</a></li>
             <li class="nav-right-section">
@@ -31,6 +32,8 @@ function loadNavigation() {
         if (homeLink) homeLink.classList.add('active');
     } else if (path === 'journal.html') {
         const el = document.getElementById('nav-journal'); if (el) el.classList.add('active');
+    } else if (path === 'reflections.html') {
+        const el = document.getElementById('nav-reflections'); if (el) el.classList.add('active');
     } else if (path === 'about.html') {
         const el = document.getElementById('nav-about'); if (el) el.classList.add('active');
     } else if (path === 'projects.html') {

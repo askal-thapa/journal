@@ -9,35 +9,64 @@
 <body>
     <header class="navigation"></header>
 
-    <main>
+    <main class="main-container">
         <section class="project-showcase">
-            <h1>Technical Portfolio</h1>
-            <p style="margin-bottom: 30px;">A collection of my creative computing and technical work, showcasing skills learned throughout the unit.</p>
+            <div class="section-header">
+                <h1>🚀 Technical Portfolio</h1>
+                <p class="section-subtitle">Collection of creative computing and technical work</p>
+            </div>
             
             <article class="project-card fade-in">
-                <h2>Progressive Web App Journal</h2>
-                <p>
-                    <b>Technologies:</b> HTML5, CSS3, JavaScript ES6+, PWA APIs
-                    <br><b>Features:</b> Responsive design, dark mode, offline functionality, installable
-                    <br><b>Status:</b> Complete with enhanced UI and interactive features
-                </p>
-                
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 95%;"></div>
+                <div class="project-header">
+                    <h2>📱 Progressive Web App Journal</h2>
+                    <span class="project-status">✓ Complete</span>
                 </div>
                 
-                <p style="margin-top: 15px;">This learning journal demonstrates modern web development practices including mobile-first responsive design, progressive enhancement, and PWA capabilities. Features include a beautiful gradient UI, smooth animations, search functionality, and copy-to-clipboard features.</p>
+                <div class="project-details">
+                    <div class="detail-item">
+                        <span class="detail-label">🛠️ Technologies:</span>
+                        <span>HTML5, CSS3, JavaScript ES6+, Python, JSON</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">✨ Features:</span>
+                        <span>Responsive design, dark mode, offline functionality, JSON storage, filtering & export</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">📊 Status:</span>
+                        <div class="progress-bar" style="margin: 8px 0;">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
                 
-                <a href="https://github.com/askal-thapa/journal" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background: var(--accent-primary); color: var(--bg-surface); text-decoration: none; border-radius: 25px; transition: all 0.3s ease; box-shadow: 0 2px 8px var(--shadow-primary);">View Source Code (GitHub)</a>
+                <p class="project-description">This learning journal demonstrates modern web development practices including mobile-first responsive design, progressive enhancement, and PWA capabilities. Features include:</p>
+                
+                <ul class="project-features">
+                    <li>🎨 Beautiful gradient UI with smooth animations</li>
+                    <li>📝 Weekly learning entries with statistics</li>
+                    <li>💭 JSON-based reflection system with Python backend</li>
+                    <li>🔍 Filter and search functionality</li>
+                    <li>📥 Export data to CSV</li>
+                    <li>🌙 Dark mode with theme persistence</li>
+                    <li>📱 Fully responsive mobile experience</li>
+                    <li>⚡ PWA with offline support</li>
+                </ul>
+                
+                <div class="project-links">
+                    <a href="https://github.com/askal-thapa/journal" class="btn btn-primary">🔗 View Source Code</a>
+                    <a href="journal.html" class="btn btn-secondary">📖 View Journal</a>
+                </div>
             </article>
 
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Askal Thapa. All rights reserved.</p>
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Askal Thapa | Computer Science Student | UCA Farnham</p>
+            <p class="footer-subtitle">From concept to production: building excellent web applications</p>
+        </div>
     </footer>
-</footer>
 
     <script src="js/script.js"></script>
 </body>
