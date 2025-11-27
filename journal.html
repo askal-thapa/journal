@@ -23,12 +23,12 @@
             <div class="stats-container">
                 <div class="stat-card stat-card-1">
                     <div class="stat-icon">📅</div>
-                    <div class="stat-number">5</div>
+                    <div class="stat-number">6</div>
                     <div class="stat-label">Weeks Completed</div>
                 </div>
                 <div class="stat-card stat-card-2">
                     <div class="stat-icon">✅</div>
-                    <div class="stat-number">20</div>
+                    <div class="stat-number">25</div>
                     <div class="stat-label">Learning Objectives</div>
                 </div>
             </div>
@@ -432,13 +432,131 @@
                     </div>
             </article>
 
+            <!-- WEEK 6 ENTRY: Flask Backend Integration -->
+            <article class="week-entry fade-in" style="animation-delay: 0.45s;" data-week="6">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <div class="week-header-left">
+                        <div class="week-badge week-6">Week 6</div>
+                        <h2>Flask Backend Integration & Full-Stack Development</h2>
+                        <p class="entry-date">Posted: November 30, 2025</p>
+
+                        <div class="progress-bar" style="margin-bottom: 20px;">
+                            <div class="progress-fill" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+
+                <div class="entry-content">
+                    <div class="entry-section">
+                        <h3>📚 Learning Objectives Achieved</h3>
+                        <ul class="reflection-list">
+                            <li><b>Flask Framework Mastery:</b> Built a complete RESTful API backend using Flask with proper route handling and JSON responses</li>
+                            <li><b>HTTP Methods Implementation:</b> Implemented GET, POST, PUT, and DELETE methods for full CRUD operations</li>
+                            <li><b>Frontend-Backend Communication:</b> Established seamless communication between JavaScript frontend and Python Flask backend using Fetch API</li>
+                            <li><b>Data Persistence:</b> Created secure server-side data storage with JSON file management through Flask</li>
+                            <li><b>Error Handling:</b> Implemented robust error handling for edge cases including missing files and invalid data</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>🔑 Understanding Frontend-Backend Connection</h3>
+                        <p>The connection between frontend and backend is vital for creating an application that is usable over time and across multiple devices. The frontend is the quick, responsive part that users interact with, but it doesn't have the memory needed for a journal. The backend, running Flask on the server, is where the application's state and data persistence live. It guarantees that the entries I write today will still be there a month from now, even if I use a different laptop. This fundamental separation of concerns—UI on the client and data management on the server—is what defines a modern web app.</p>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>🌐 HTTP Methods in Flask Implementation</h3>
+                        <p>I used GET, POST, and PUT methods for my application's logic:</p>
+                        <ul class="reflection-list">
+                            <li><b>GET:</b> Used simply to fetch the current list of reflections. It's safe and doesn't modify the server's data. This method retrieves all reflections from the JSON file and returns them as JSON to the frontend.</li>
+                            <li><b>POST:</b> Used every time I submitted a new journal entry. This method correctly signals to the server that the request is intended to create a new record in the JSON file. The Flask route accepts JSON data, validates it, appends it to the reflections list, and saves the updated file.</li>
+                            <li><b>PUT:</b> Used for my editing feature. I used it specifically to replace an existing record with a completely new version of the data, which is the standard purpose of the PUT method. The route identifies the reflection by ID, updates all fields, and saves the modified list back to the JSON file.</li>
+                            <li><b>DELETE:</b> Implemented for removing reflections. This method finds the entry by ID, removes it from the list, and persists the changes.</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>🔄 Flask vs Browser JSON Storage</h3>
+                        <p>The main difference is that using Flask gives us a secure way to write data. When I read a JSON file directly in the browser, I'm just getting a local copy of the information; there's no way to edit the file on the server. If I used a client-side method like localStorage, the data would be tied only to my specific browser's memory.</p>
+                        <p>Flask mediates the entire process. It hosts the data file, and my JavaScript can send small API requests to Flask's routes. Flask, being server-side, has the permissions to access the server's file system, making the necessary changes to the reflections.json file and saving them securely. This approach enables:</p>
+                        <ul class="reflection-list">
+                            <li>Persistent data storage across devices and browsers</li>
+                            <li>Secure write operations that client-side JavaScript cannot perform</li>
+                            <li>Centralized data management on the server</li>
+                            <li>Ability to share and access data from any device</li>
+                            <li>Proper separation of concerns between presentation and data layers</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>🐛 PythonAnywhere Deployment Challenges</h3>
+                        <p>My biggest headache came from an initial data crash during the first run. Since the reflections.json file didn't exist when I started my web app for the first time, or if it was empty, my Python code would throw a JSONDecodeError when it tried to load the file contents. The whole server would crash because it was expecting data and found nothing.</p>
+                        <p>I handled this by updating my Python functions (load_reflections). I wrapped the part that reads the JSON file in a try...except block. If the JSONDecodeError occurred, instead of crashing, the function now gracefully returns an empty Python list ([]). This allows the application to start cleanly and simply create the very first reflection entry without crashing.</p>
+                        <div style="background: var(--accent-lavender); padding: 15px; border-radius: 8px; margin-top: 10px;">
+                            <p><b>Solution Code Pattern:</b></p>
+                            <pre style="background: var(--bg-surface); padding: 10px; border-radius: 4px; overflow-x: auto;"><code>def load_reflections():
+    if os.path.exists(REFLECTIONS_FILE):
+        try:
+            with open(REFLECTIONS_FILE, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except (json.JSONDecodeError, IOError):
+            return []
+    return []</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>✨ Extra Feature: Edit Entry Functionality</h3>
+                        <p>I chose to implement an Edit Entry feature, which allows a user to modify any of the reflections they've previously submitted.</p>
+                        <p>I implemented this using a PUT request. The frontend sends the entire updated reflection object to a specific Flask route along with the entry's ID. In my flask_app.py, the code finds the old entry using the ID, replaces it with the new data, and then saves the complete updated list back to the reflections.json file. I added this because journal entries often require small corrections or expansions after they're first written. Having the ability to update the data permanently on the server was a necessary step for making the PWA truly functional.</p>
+                        <p><b>Technical Implementation:</b></p>
+                        <ul class="reflection-list">
+                            <li>Frontend JavaScript populates the form with existing reflection data when edit button is clicked</li>
+                            <li>Form submission detects edit mode via a data attribute (dataset.editId)</li>
+                            <li>PUT request sent to `/api/update_reflection/&lt;id&gt;` with updated JSON payload</li>
+                            <li>Flask route locates the reflection by ID, updates all fields while preserving timestamp and ID</li>
+                            <li>Updated list is saved back to JSON file, ensuring data persistence</li>
+                            <li>Frontend refreshes to display the updated reflection</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>🛠️ Technical Architecture</h3>
+                        <p>The Flask application follows RESTful principles with clear separation of concerns:</p>
+                        <ul class="reflection-list">
+                            <li><b>API Routes:</b> `/api/reflections` (GET), `/api/add_reflection` (POST), `/api/update_reflection/&lt;id&gt;` (PUT), `/api/delete_reflection/&lt;id&gt;` (DELETE), `/api/search_reflections` (GET with query parameter)</li>
+                            <li><b>Data Layer:</b> JSON file storage with helper functions for loading and saving reflections</li>
+                            <li><b>Frontend Layer:</b> Vanilla JavaScript using Fetch API for all HTTP requests</li>
+                            <li><b>Error Handling:</b> Comprehensive try-catch blocks with meaningful error messages returned as JSON</li>
+                            <li><b>Data Validation:</b> Server-side validation ensures required fields (title, content) are present before saving</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>💡 Key Learnings & Insights</h3>
+                        <ul class="reflection-list">
+                            <li><b>RESTful Design:</b> Using appropriate HTTP methods makes the API intuitive and follows web standards</li>
+                            <li><b>Error Handling:</b> Graceful error handling prevents application crashes and provides better user experience</li>
+                            <li><b>Data Persistence:</b> Server-side storage ensures data survives browser sessions and device changes</li>
+                            <li><b>Separation of Concerns:</b> Frontend handles UI/UX, backend handles data management—clean architecture</li>
+                            <li><b>API Design:</b> Well-structured API routes make the application maintainable and extensible</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>🚀 Project Completion Reflection</h3>
+                        <p>Week 6 represents the culmination of my full-stack development journey. Starting from static HTML/CSS, progressing through JavaScript interactivity, implementing PWA features, and now completing the stack with Flask backend integration, I've built a fully functional web application. The experience of connecting frontend and backend, handling HTTP methods correctly, and managing data persistence has given me a comprehensive understanding of modern web development architecture. This foundation prepares me for more advanced concepts like databases, authentication, and cloud deployment.</p>
+                    </div>
+                </div>
+            </article>
+
         </section>
     </main>
 
     <footer class="footer">
         <div class="footer-content">
             <p>&copy; 2025 Askal Thapa | Computer Science Student | UCA Farnham</p>
-            <p class="footer-subtitle">Week 5: Python & JSON Backend Integration</p>
+            <p class="footer-subtitle">Week 6: Flask Backend Integration & Full-Stack Development</p>
         </div>
     </footer>
 

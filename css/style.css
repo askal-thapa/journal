@@ -527,6 +527,10 @@ nav .nav-toggle button:active,
     background: linear-gradient(135deg, #F59E0B, #FBBF24);
 }
 
+.week-6 {
+    background: linear-gradient(135deg, #06B6D4, #3B82F6);
+}
+
 .entry-date {
     font-style: italic;
     color: var(--text-secondary);
@@ -1337,6 +1341,10 @@ footer {
 
 .week-5 {
     background: linear-gradient(135deg, #EC4899, #F97316) !important;
+}
+
+.week-6 {
+    background: linear-gradient(135deg, #06B6D4, #3B82F6) !important;
 }
 
 /* ============================================
