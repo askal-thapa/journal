@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Askal Thapa's Learning Journal - Flappy Bird Clone</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="navigation"></header>
+
+    <main class="main-container">
+        <section class="hero fade-in" style="padding: 30px 0; text-align: center;">
+            <h1>Flappy Clone</h1>
+            <p class="subtitle">A classic reimagined for the web</p>
+        </section>
+
+        <section class="game-section fade-in">
+            <div class="game-container">
+                <div class="canvas-wrapper" style="position: relative;">
+                    <canvas id="gameCanvas" width="320" height="480"></canvas>
+
+                    <!-- UI Overlays -->
+                    <div id="startScreen" class="game-overlay">
+                        <h2>Flappy Clone</h2>
+                        <p>Press Space to Jump</p>
+                        <button id="overlayStartBtn" class="btn-game btn-start-overlay">▶ Play</button>
+                    </div>
+
+                    <div id="gameOverScreen" class="game-overlay hidden">
+                        <h2>Game Over</h2>
+                        <div class="score-card">
+                            <div class="score-item">
+                                <span>Score</span>
+                                <span id="currentScore">0</span>
+                            </div>
+                            <div class="score-item">
+                                <span>Best</span>
+                                <span id="bestScore">0</span>
+                            </div>
+                        </div>
+                        <button id="restartBtn" class="btn-game btn-restart">↺ Restart</button>
+                    </div>
+
+                    <div id="scoreDisplay" class="game-score hidden">0</div>
+                </div>
+
+                <div class="game-controls">
+                    <label class="toggle-infinite">
+                        <input type="checkbox" id="infiniteMode"> Infinite Mode (God Mode)
+                    </label>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Askal Thapa | Computer Science Student | UCA Farnham</p>
+            <p class="footer-subtitle">Building the web, one project at a time 🚀</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/game.js"></script>
+</body>
+
+</html>

@@ -65,6 +65,59 @@ body {
     transition: all 0.3s ease;
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+/* Back to Top Button */
+#backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--accent-primary);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px var(--shadow-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+
+#backToTop.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#backToTop:hover {
+    transform: translateY(-5px);
+    background: var(--hover-color);
+    box-shadow: 0 8px 16px var(--shadow-primary);
+}
+
 .navigation {
     background: var(--bg-surface);
     backdrop-filter: blur(10px);
@@ -2262,3 +2315,206 @@ footer {
         margin-top: -25px;
     }
 }
+
+/* Flappy Bird Game Styles */
+.game-section {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.canvas-wrapper {
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-card);
+    transition: transform 0.3s ease;
+}
+
+.canvas-wrapper:hover {
+    transform: scale(1.02);
+}
+
+canvas {
+    display: block;
+    border-radius: 15px;
+    background-color: #70c5ce;
+    /* Sky blue */
+    max-width: 100%;
+    cursor: pointer;
+}
+
+/* UI Overlays */
+.game-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 280px;
+    border: 1px solid var(--border-color);
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+}
+
+.dark-mode .game-overlay {
+    background: rgba(30, 41, 59, 0.9);
+}
+
+.game-overlay.hidden {
+    display: none;
+}
+
+.game-overlay h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-lavender));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+}
+
+.game-overlay p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.game-score {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    font-weight: 800;
+    color: white;
+    text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    pointer-events: none;
+    z-index: 5;
+    font-family: 'Impact', sans-serif;
+}
+
+.game-score.hidden {
+    display: none;
+}
+
+/* Score Card */
+.score-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.score-item {
+    background: var(--bg-secondary);
+    padding: 10px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.score-item span:first-child {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.score-item span:last-child {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Controls */
+.game-controls {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-game {
+    padding: 12px 28px;
+    border-radius: 50px;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px var(--shadow-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-start-overlay,
+.btn-restart {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-lavender));
+    color: white;
+    width: 100%;
+}
+
+.btn-game:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--shadow-primary);
+}
+
+.btn-game:active {
+    transform: translateY(-1px);
+}
+
+.toggle-infinite {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 10px 20px;
+    background: var(--bg-surface);
+    border-radius: 50px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px var(--shadow-card);
+}
+
+.toggle-infinite:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
+.toggle-infinite input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--accent-primary);
+}
+
+@keyframes popIn {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+```
