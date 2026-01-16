@@ -1,5 +1,14 @@
 const navHTML = `
     <nav>
+        <div class="nav-brand-mobile">
+            <a href="index.html">Askal Thapa</a>
+        </div>
+        <button class="hamburger" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-overlay"></div>
         <ul class="nav-container">
             <li><a href="index.html" id="nav-home">Home</a></li>
             <li><a href="journal.html" id="nav-journal">Journal</a></li>
@@ -42,6 +51,62 @@ function loadNavigation() {
     } else if (path === 'game.html') {
         const el = document.getElementById('nav-game'); if (el) el.classList.add('active');
     }
+
+    setupMobileMenu();
+}
+
+function setupMobileMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const navContainer = document.querySelector('.nav-container');
+    const navOverlay = document.querySelector('.nav-overlay');
+    const navLinks = document.querySelectorAll('.nav-container a');
+    const body = document.body;
+
+    if (!hamburger || !navContainer) return;
+
+    function toggleMenu() {
+        hamburger.classList.toggle('active');
+        navContainer.classList.toggle('active');
+        navOverlay.classList.toggle('active');
+        body.classList.toggle('menu-open');
+    }
+
+    function closeMenu() {
+        hamburger.classList.remove('active');
+        navContainer.classList.remove('active');
+        navOverlay.classList.remove('active');
+        body.classList.remove('menu-open');
+    }
+
+    hamburger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
+    });
+
+    if (navOverlay) {
+        navOverlay.addEventListener('click', closeMenu);
+    }
+
+    // Close menu when clicking a link
+    navLinks.forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (navContainer.classList.contains('active') &&
+            !navContainer.contains(e.target) &&
+            !hamburger.contains(e.target)) {
+            closeMenu();
+        }
+    });
+
+    // Close menu on resize to desktop
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && navContainer.classList.contains('active')) {
+            closeMenu();
+        }
+    });
 }
 
 function setupThemeSwitcher() {
