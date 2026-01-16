@@ -32,7 +32,7 @@ async function syncOfflineReflections() {
 
     for (const reflection of reflections) {
         try {
-            const response = await fetch('/api/reflections', {
+            const response = await fetch('http://localhost:8000/api/reflections', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(reflection)
@@ -95,27 +95,35 @@ const navHTML = `
         <div class="nav-brand-mobile">
             <a href="index.html">Askal Thapa</a>
         </div>
-        <button class="hamburger" aria-label="Toggle navigation">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+        
+        <div class="nav-mobile-right">
+            <div class="nav-info-wrapper">
+                 <div class="nav-info">
+                    <div class="nav-time nav-time-display">Loading...</div>
+                    <div class="nav-location nav-location-display">Loading location...</div>
+                </div>
+            </div>
+            <button class="hamburger" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
         <div class="nav-overlay"></div>
         <ul class="nav-container">
             <li><a href="index.html" id="nav-home">Home</a></li>
             <li><a href="journal.html" id="nav-journal">Journal</a></li>
             <li><a href="reflections.html" id="nav-reflections">Reflections</a></li>
             <li><a href="about.html" id="nav-about">About</a></li>
-            <li><a href="projects.html" id="nav-projects">Projects</a></li>
-            <li><a href="game.html" id="nav-game">Game</a></li>
-            <li class="nav-right-section">
+            <li class="nav-right-section-desktop">
                 <div class="theme-toggle-container">
                     <span class="theme-toggle-label">Dark Mode</span>
                     <button id="theme-toggle" aria-label="Toggle theme"></button>
                 </div>
                 <div class="nav-info">
-                    <div class="nav-time" id="current-time">Loading...</div>
-                    <div class="nav-location" id="current-location">Loading location...</div>
+                    <div class="nav-time nav-time-display">Loading...</div>
+                    <div class="nav-location nav-location-display">Loading location...</div>
                 </div>
             </li>
         </ul>
@@ -207,37 +215,54 @@ function setupThemeSwitcher() {
     const body = document.body;
     if (!toggleButton) return;
 
+    const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+    const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+
+    function updateThemeUI(isDark) {
+        if (isDark) {
+            body.classList.add('dark-mode');
+            toggleButton.classList.add('active');
+            toggleButton.innerHTML = moonIcon; // Show moon in dark mode (or sun to switch back? standard is show current state or action)
+            // Actually, best UX: Show the icon of the mode you are IN (or will switch to?). 
+            // Standard: Show sun if you can switch to light (i.e. currently dark), or show moon if you can switch to dark.
+            // Wait, usually the icon represents the *current* state (Moon = Night mode is On). 
+            // Let's stick to: Moon Icon = Dark Mode Active. Sun Icon = Light Mode Active.
+            toggleButton.innerHTML = sunIcon; /* Shows Sun, indicating click to go Light */
+            toggleButton.setAttribute('aria-label', 'Switch to light theme');
+            if (toggleLabel) toggleLabel.textContent = 'Light Mode';
+        } else {
+            body.classList.remove('dark-mode');
+            toggleButton.classList.remove('active');
+            toggleButton.innerHTML = moonIcon; /* Shows Moon, indicating click to go Dark */
+            toggleButton.setAttribute('aria-label', 'Switch to dark theme');
+            if (toggleLabel) toggleLabel.textContent = 'Dark Mode';
+        }
+    }
+
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
-        body.classList.add('dark-mode');
-        toggleButton.classList.add('active');
-        toggleLabel.textContent = 'Light Mode';
-        toggleButton.setAttribute('aria-label', 'Switch to light theme');
+        updateThemeUI(true);
     } else {
-        toggleLabel.textContent = 'Dark Mode';
-        toggleButton.setAttribute('aria-label', 'Switch to dark theme');
+        updateThemeUI(false);
     }
 
     toggleButton.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        toggleButton.classList.toggle('active');
-
-        if (body.classList.contains('dark-mode')) {
-            localStorage.setItem('theme', 'dark');
-            toggleLabel.textContent = 'Light Mode';
-            toggleButton.setAttribute('aria-label', 'Switch to light theme');
-        } else {
+        const isDark = body.classList.contains('dark-mode');
+        // Toggle
+        if (isDark) {
             localStorage.setItem('theme', 'light');
-            toggleLabel.textContent = 'Dark Mode';
-            toggleButton.setAttribute('aria-label', 'Switch to dark theme');
+            updateThemeUI(false);
+        } else {
+            localStorage.setItem('theme', 'dark');
+            updateThemeUI(true);
         }
     });
 }
 
 // Real-time clock functionality
 function updateTime() {
-    const timeElement = document.getElementById('current-time');
-    if (!timeElement) return;
+    const timeElements = document.querySelectorAll('.nav-time-display');
+    if (timeElements.length === 0) return;
 
     const now = new Date();
     const options = {
@@ -248,13 +273,17 @@ function updateTime() {
     };
 
     const timeString = now.toLocaleTimeString('en-US', options);
-    timeElement.textContent = timeString;
+    timeElements.forEach(el => el.textContent = timeString);
 }
 
 // Location functionality with caching
 async function updateLocation() {
-    const locationElement = document.getElementById('current-location');
-    if (!locationElement) return;
+    const locationElements = document.querySelectorAll('.nav-location-display');
+    if (locationElements.length === 0) return;
+
+    function setLocationText(text) {
+        locationElements.forEach(el => el.textContent = text);
+    }
 
     // Check if we have cached location data
     const cachedLocation = localStorage.getItem('cachedLocation');
@@ -264,12 +293,12 @@ async function updateLocation() {
 
     // If we have cached data and it's not expired, use it
     if (cachedLocation && cacheTimestamp && (now - parseInt(cacheTimestamp)) < cacheExpiry) {
-        locationElement.textContent = cachedLocation;
+        setLocationText(cachedLocation);
         return;
     }
 
     if (!navigator.geolocation) {
-        locationElement.textContent = 'Location not supported';
+        setLocationText('Location not supported');
         return;
     }
 
@@ -290,7 +319,7 @@ async function updateLocation() {
         const data = await response.json();
 
         const city = data.city || data.locality || data.countryName || 'Unknown location';
-        locationElement.textContent = city;
+        setLocationText(city);
 
         // Cache the location data
         localStorage.setItem('cachedLocation', city);
@@ -303,14 +332,14 @@ async function updateLocation() {
             const response = await fetch('https://ipapi.co/json/');
             const data = await response.json();
             const city = data.city || 'Unknown location';
-            locationElement.textContent = city;
+            setLocationText(city);
 
             // Cache the fallback location too
             localStorage.setItem('cachedLocation', city);
             localStorage.setItem('locationCacheTime', now.toString());
         } catch (ipError) {
             const fallbackLocation = 'London, UK'; // Default fallback
-            locationElement.textContent = fallbackLocation;
+            setLocationText(fallbackLocation);
 
             // Cache even the fallback
             localStorage.setItem('cachedLocation', fallbackLocation);

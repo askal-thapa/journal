@@ -10,7 +10,11 @@ DATA_FILE = os.path.join(os.path.dirname(__file__), 'reflections.json')
 
 class CustomHandler(http.server.SimpleHTTPRequestHandler):
     def do_POST(self):
-        if self.path == '/api/reflections':
+        print(f"Received POST request: {self.path}")
+        # Normalize path by removing trailing slash/query params for simple matching
+        clean_path = self.path.split('?')[0].rstrip('/')
+        
+        if clean_path == '/api/reflections':
             content_length = int(self.headers['Content-Length'])
             post_data = self.rfile.read(content_length)
             
@@ -45,14 +49,17 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
                 self.end_headers()
                 response = {"status": "success", "message": "Reflection saved successfully"}
                 self.wfile.write(json.dumps(response).encode('utf-8'))
+                print("Reflection saved successfully.")
                 
             except Exception as e:
+                print(f"Error saving reflection: {e}")
                 self.send_response(500)
                 self.send_header('Content-type', 'application/json')
                 self.end_headers()
                 response = {"status": "error", "message": str(e)}
                 self.wfile.write(json.dumps(response).encode('utf-8'))
         else:
+            print(f"404: Endpoint not found for {self.path}")
             self.send_error(404, "Endpoint not found")
 
     def end_headers(self):

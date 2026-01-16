@@ -95,7 +95,9 @@
          */
         async function loadReflections() {
             try {
-                const response = await fetch('backend/reflections.json');
+                // Fetch from the backend server explicitly
+                // Using http://localhost:8000/backend/reflections.json ensures we get the file even if viewed on port 5500 or 8000
+                const response = await fetch('http://localhost:8000/backend/reflections.json');
                 if (!response.ok) throw new Error('Failed to fetch reflections');
 
                 allReflections = await response.json();
@@ -287,7 +289,9 @@
                     // Check connectivity
                     if (navigator.onLine) {
                         try {
-                            const response = await fetch('/api/reflections', {
+                            // Use absolute URL for the API to ensure we hit the Python server (port 8000)
+                            // even if viewing on Live Server (port 5500)
+                            const response = await fetch('http://localhost:8000/api/reflections', {
                                 method: 'POST',
                                 headers: { 'Content-Type': 'application/json' },
                                 body: JSON.stringify(newEntry)
@@ -298,10 +302,16 @@
                                 form.reset();
                                 loadReflections(); // Refresh list
                             } else {
-                                throw new Error('Server error');
+                                const errText = await response.text();
+                                console.error('Server Validation Error:', errText);
+                                throw new Error(`Server returned ${response.status}: ${errText}`);
                             }
                         } catch (error) {
-                            console.error('Save error:', error);
+                            console.error('Save error details:', error);
+                            // Only save locally if it's a genuine network error, otherwise alerting the user is better?
+                            // But for PWA resilience, we often save locally. 
+                            // Let's inform the user WHY.
+                            alert(`Server save failed: ${error.message}. Saving locally.`);
                             saveLocally(newEntry);
                         }
                     } else {
