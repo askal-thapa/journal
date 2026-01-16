@@ -1,3 +1,95 @@
+// Register Service Worker
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('Service Worker: Registered (Pages)'))
+            .catch(err => console.log(`Service Worker: Error: ${err}`));
+    });
+}
+
+// Offline/Online Status Handling
+window.addEventListener('online', () => {
+    showNotification('You are back online! 🌐');
+    syncOfflineReflections();
+});
+
+window.addEventListener('offline', () => {
+    showNotification('You are offline. Changes will save locally. 💾');
+});
+
+// Sync Logic
+async function syncOfflineReflections() {
+    const offlineData = localStorage.getItem('offlineReflections');
+    if (!offlineData) return;
+
+    const reflections = JSON.parse(offlineData);
+    if (reflections.length === 0) return;
+
+    showNotification(`Syncing ${reflections.length} offline reflection(s)... ⏳`);
+
+    let syncedCount = 0;
+    const remainingReflections = [];
+
+    for (const reflection of reflections) {
+        try {
+            const response = await fetch('/api/reflections', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(reflection)
+            });
+
+            if (response.ok) {
+                syncedCount++;
+            } else {
+                remainingReflections.push(reflection);
+            }
+        } catch (error) {
+            console.error('Sync error:', error);
+            remainingReflections.push(reflection);
+        }
+    }
+
+    if (syncedCount > 0) {
+        showNotification(`Successfully synced ${syncedCount} reflections! ✅`);
+        // Reload reflections if on the page
+        if (typeof loadReflections === 'function') {
+            loadReflections();
+        }
+    }
+
+    if (remainingReflections.length > 0) {
+        localStorage.setItem('offlineReflections', JSON.stringify(remainingReflections));
+    } else {
+        localStorage.removeItem('offlineReflections');
+    }
+}
+
+// Toast Notification
+function showNotification(message, duration = 3000) {
+    let container = document.getElementById('toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'toast-container';
+        document.body.appendChild(container);
+    }
+
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+
+    container.appendChild(toast);
+
+    // Trigger reflow
+    void toast.offsetWidth;
+
+    toast.classList.add('show');
+
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+    }, duration);
+}
+
 const navHTML = `
     <nav>
         <div class="nav-brand-mobile">

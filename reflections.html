@@ -42,6 +42,28 @@
                 <button class="export-btn" onclick="exportToCSV()">📥 Export to CSV</button>
             </section>
 
+            <!-- New Add Reflection Form -->
+            <section class="form-section fade-in" style="animation-delay: 0.25s;">
+                <form id="reflectionForm" class="reflection-form">
+                    <h3>➕ Add New Reflection</h3>
+                    <div class="form-group">
+                        <textarea id="reflectionText" placeholder="Write your reflection here..." required
+                            rows="4"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <select id="reflectionCategory">
+                                <option value="General">General 📝</option>
+                                <option value="Learning">Learning 📚</option>
+                                <option value="Insight">Insight 💡</option>
+                                <option value="Challenge">Challenge ⚠️</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn">Save Entry</button>
+                    </div>
+                </form>
+            </section>
+
             <section class="filter-section fade-in" id="filterSection" style="animation-delay: 0.3s;">
                 <button class="filter-btn" data-category="all" onclick="filterCategory('all', this)">📋 All</button>
             </section>
@@ -243,7 +265,63 @@
         }
 
         // Load reflections on page load
-        document.addEventListener('DOMContentLoaded', loadReflections);
+        document.addEventListener('DOMContentLoaded', () => {
+            loadReflections();
+
+            // Handle Form Submission
+            const form = document.getElementById('reflectionForm');
+            if (form) {
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+
+                    const text = document.getElementById('reflectionText').value;
+                    const category = document.getElementById('reflectionCategory').value;
+
+                    const newEntry = {
+                        date: new Date().toISOString(),
+                        text: text,
+                        category: category,
+                        id: Date.now()
+                    };
+
+                    // Check connectivity
+                    if (navigator.onLine) {
+                        try {
+                            const response = await fetch('/api/reflections', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(newEntry)
+                            });
+
+                            if (response.ok) {
+                                showNotification('Reflection saved to server! 🎉');
+                                form.reset();
+                                loadReflections(); // Refresh list
+                            } else {
+                                throw new Error('Server error');
+                            }
+                        } catch (error) {
+                            console.error('Save error:', error);
+                            saveLocally(newEntry);
+                        }
+                    } else {
+                        saveLocally(newEntry);
+                    }
+                });
+            }
+        });
+
+        function saveLocally(entry) {
+            // Get existing offline entries
+            const offlineData = JSON.parse(localStorage.getItem('offlineReflections') || '[]');
+            offlineData.push(entry);
+            localStorage.setItem('offlineReflections', JSON.stringify(offlineData));
+
+            showNotification('Saved locally! Will sync when online. 💾');
+            document.getElementById('reflectionForm').reset();
+
+            // Optionally update UI immediately with "pending" state (optional simplification: just wait for sync)
+        }
     </script>
 </body>
 
