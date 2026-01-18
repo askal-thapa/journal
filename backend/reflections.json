@@ -10,5 +10,11 @@
     "text": "Discovered the difference between browser storage and file-based JSON storage. JSON file storage persists on the server side and can be modified by backend scripts, while browser storage is client-side only.",
     "category": "Insight",
     "id": 2
+  },
+  {
+    "date": "2026-01-18T15:22:57.406Z",
+    "text": "HI",
+    "category": "General",
+    "id": 1768749777406
   }
 ]
