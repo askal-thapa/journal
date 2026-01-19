@@ -115,6 +115,7 @@ const navHTML = `
             <li><a href="index.html" id="nav-home">Home</a></li>
             <li><a href="journal.html" id="nav-journal">Journal</a></li>
             <li><a href="reflections.html" id="nav-reflections">Reflections</a></li>
+            <li><a href="game.html" id="nav-game">Game</a></li>
             <li><a href="about.html" id="nav-about">About</a></li>
             <li class="nav-right-section-desktop">
                 <div class="theme-toggle-container">
