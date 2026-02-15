@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1B1712">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/images/favicon-32.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Journal">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Askal Thapa's Learning Journal - Weekly Entries</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="navigation"></header>
+
+    <main>
+        <section class="journal-entries">
+            <div class="header-section">
+                <h1>My Weekly Learning Journal</h1>
+                <p class="subtitle">Documenting my growth and key insights from the Mobile Application Development unit
+                </p>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="stats-container">
+                <div class="stat-card stat-card-1">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">Weeks Completed</div>
+                </div>
+                <div class="stat-card stat-card-2">
+                    <div class="stat-number">25</div>
+                    <div class="stat-label">Learning Objectives</div>
+                </div>
+            </div>
+
+            <!-- Search Box -->
+            <div class="search-container">
+                <input type="text" class="search-box" placeholder="Search journal entries..." id="searchInput">
+            </div>
+
+            <!-- Week 1 -->
+            <article class="week-entry fade-in active" style="animation-delay: 0.1s;" data-week="1">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <div class="week-header-left">
+                        <div class="week-badge week-1">Week 1</div>
+                        <h2>Getting Started: Course Introduction & Setup</h2>
+                        <p class="entry-date">Posted: October 15, 2025</p>
+
+                        <!-- Progress Bar -->
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+
+                <div class="entry-content">
+                    <div class="entry-section">
+                        <h3>Learning Objectives Achieved</h3>
+                        <ul class="reflection-list">
+                            <li>Understood the structure and expectations of the Mobile App Development course</li>
+                            <li>Set up development environment with VS Code and Git</li>
+                            <li>Created GitHub repository and deployed first version</li>
+                            <li>Established project folder structure following best practices</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>Key Insights</h3>
+                        <p>This week was foundational. Taking time to properly set up the environment and understand
+                            project structure saved significant time later. I realized that initial setup investments
+                            pay dividends in development speed and code organization.</p>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>Technical Implementation</h3>
+                        <p>Created the four-page portfolio structure (index.html, about.html, projects.html,
+                            journal.html) with consistent navigation. Initialized Git for version control and deployed
+                            to GitHub Pages. This provided a solid foundation for all subsequent work.</p>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>Challenges & Solutions</h3>
+                        <ul class="reflection-list">
+                            <li>Initial deployment issues → Resolved by configuring gh-pages settings correctly</li>
+                            <li>Navigation consistency across pages → Solved with centralized CSS styling</li>
+                        </ul>
+                    </div>
+
+
+                </div>
+            </article>
+
+
+            <!-- Week 2 -->
+            <article class="week-entry fade-in" style="animation-delay: 0.15s;" data-week="2">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <div class="week-header-left">
+                        <div class="week-badge week-2">Week 2</div>
+                        <h2>Frontend Fundamentals: HTML & CSS Mastery</h2>
+                        <p class="entry-date">Posted: October 27, 2025</p>
+
+                        <!-- Progress Bar -->
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+
+                <div class="entry-content">
+                    <div class="entry-section">
+                        <h3>Learning Objectives Achieved</h3>
+                        <ul class="reflection-list">
+                            <li>Mastered semantic HTML5 for better accessibility and SEO</li>
+                            <li>Implemented mobile-first responsive design approach</li>
+                            <li>Created sophisticated CSS Grid and Flexbox layouts</li>
+                            <li>Built custom theme system with CSS variables</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>Reflection Questions</h3>
+                        <ol class="reflection-list">
+                            <li><b>Mobile-First Approach:</b> Started with narrow layouts using `min-width` media
+                                queries to progressively enhance for larger screens, resulting in cleaner and more
+                                efficient CSS.</li>
+                            <li><b>Most Useful Concept:</b> Flexbox proved invaluable for aligning navigation elements
+                                and creating responsive layouts without complex float-based solutions.</li>
+                            <li><b>Biggest Challenge:</b> Understanding CSS selector precedence and managing margin
+                                collapse, especially with nested components.</li>
+                        </ol>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>Technical Progress</h3>
+                        <p>Successfully implemented a complete responsive design system with CSS custom properties for
+                            theming. The layout adapts seamlessly from mobile (320px) to desktop (1920px) with intuitive
+                            breakpoints. Achieved 95/100 on Google Lighthouse performance metrics.</p>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>Key Takeaways</h3>
+                        <ul class="reflection-list">
+                            <li>Mobile-first design improves overall performance and user experience</li>
+                            <li>CSS Grid and Flexbox are complementary, not competing technologies</li>
+                            <li>Semantic HTML significantly improves accessibility and SEO rankings</li>
+                            <li>CSS variables enable easy theme switching and maintenance</li>
+                        </ul>
+                    </div>
+
+
+                </div>
+            </article>
+
+            <!-- Week 3 -->
+            <article class="week-entry fade-in" style="animation-delay: 0.2s;" data-week="3">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <div class="week-header-left">
+                        <div class="week-badge week-3">Week 3</div>
+                        <h2>JavaScript Basics & Interactive Features</h2>
+                        <p class="entry-date">Posted: November 2, 2025</p>
+
+                        <!-- Progress Bar -->
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 92%;"></div>
+                        </div>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+
+                <div class="entry-content">
+                    <div class="entry-section">
+                        <h3>Learning Objectives Achieved</h3>
+                        <ul class="reflection-list">
+                            <li>Mastered DOM manipulation using modern JavaScript APIs</li>
+                            <li>Implemented event handling and delegation patterns</li>
+                            <li>Utilized localStorage for persistent user preferences</li>
+                            <li>Built dynamic theme toggle system with smooth transitions</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>What I Learned</h3>
+                        <ul class="reflection-list">
+                            <li><b>DOM Manipulation:</b> Using querySelector, classList, and innerHTML to dynamically
+                                modify page content</li>
+                            <li><b>Event Handling:</b> Implementing click listeners and event bubbling for responsive
+                                user interactions</li>
+                            <li><b>localStorage API:</b> Persisting user preferences across browser sessions</li>
+                            <li><b>Code Organization:</b> Modular JavaScript with reusable functions following DRY
+                                principles</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>What I Built</h3>
+                        <p>Created an elegant dark/light theme toggle system that dynamically injects navigation into
+                            each page. The system toggles a `dark-mode` class on the `body` element, changes CSS
+                            variables, and persists user choice to localStorage. Includes smooth CSS transitions and
+                            accessibility features with proper ARIA labels.</p>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>Code Implementation Insights</h3>
+                        <p>The JavaScript implementation uses modern ES6+ features including arrow functions, template
+                            literals, and destructuring. Functions are modular with clear separation of concerns:
+                            navigation loading, theme switching, and state management. This architecture makes the code
+                            maintainable and easy to extend.</p>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>Personal Reflection</h3>
+                        <p>This week was transformative. I discovered how a few well-crafted lines of JavaScript
+                            dramatically enhance user experience. The experience reinforced the importance of
+                            accessibility considerations, progressive enhancement, and thoughtful state management in
+                            modern web development.</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Week 4 -->
+            <article class="week-entry fade-in" style="animation-delay: 0.25s;" data-week="4">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <div class="week-header-left">
+                        <div class="week-badge week-4">Week 4</div>
+                        <h2>Advanced Features & PWA Implementation</h2>
+                        <p class="entry-date">Posted: November 16, 2025</p>
+
+                        <!-- Progress Bar -->
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 88%;"></div>
+                        </div>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+
+                <div class="entry-content">
+                    <div class="entry-section">
+                        <h3>Learning Objectives Achieved</h3>
+                        <ul class="reflection-list">
+                            <li>Implemented Service Workers for offline functionality</li>
+                            <li>Created Web App Manifest for installability</li>
+                            <li>Optimized performance with caching strategies</li>
+                            <li>Enhanced user experience with smooth animations</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>Progressive Web App Features</h3>
+                        <ul class="reflection-list">
+                            <li><b>Service Workers:</b> Implemented intelligent caching strategies (cache-first for
+                                assets, network-first for APIs) enabling offline functionality</li>
+                            <li><b>Web App Manifest:</b> Created installable app experience with custom icons, splash
+                                screens, and display preferences</li>
+                            <li><b>Responsive Design:</b> Optimized mobile experience with touch-friendly interactions
+                                and viewport configurations</li>
+                            <li><b>Performance Optimization:</b> Applied lazy loading, code splitting, and efficient
+                                resource management techniques</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>Technical Challenges Overcome</h3>
+                        <p>The most complex challenge was implementing Service Workers correctly. Understanding
+                            lifecycle events (install, activate, fetch), cache versioning, and cache invalidation
+                            required deep study of PWA specifications and extensive cross-browser testing. The
+                            breakthrough came when I structured the cache management as versioned strategies rather than
+                            individual entries.</p>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>UX Enhancements Implemented</h3>
+                        <ul class="reflection-list">
+                            <li>Smooth page transitions with CSS animations and fade-in effects</li>
+                            <li>Improved loading states with skeleton screens and progress indicators</li>
+                            <li>Copy-to-clipboard functionality for sharing</li>
+                            <li>Touch-optimized interface with appropriate spacing and tap targets</li>
+                            <li>Accessibility improvements including keyboard navigation and screen reader support</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>Course Completion Reflection</h3>
+                        <p>Over these four weeks, I transformed from a developer with basic web knowledge to someone
+                            comfortable implementing sophisticated, production-ready web applications. The progression
+                            from static HTML/CSS to dynamic JavaScript to advanced PWA features mirrored real-world
+                            development complexity. Most importantly, I learned that continuous learning and attention
+                            to user experience are paramount in modern web development.</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- WEEK 5 ENTRY: Python & JSON Backend -->
+            <article class="week-entry fade-in" style="animation-delay: 0.4s;" data-week="5">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <div class="week-header-left">
+                        <div class="week-badge week-5">Week 5</div>
+                        <h2>Python & JSON Backend Integration</h2>
+                        <p class="entry-date">Posted: November 23, 2025</p>
+
+                        <div class="progress-bar" style="margin-bottom: 20px;">
+                            <div class="progress-fill" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+
+                <div class="entry-content">
+                    <div class="entry-section">
+                        <h3>Learning Objectives Achieved</h3>
+                        <ul class="reflection-list">
+                            <li><b>Backend Python Integration:</b> Created Python scripts that interact with JSON files
+                                for persistent data storage beyond browser capabilities</li>
+                            <li><b>File-Based Data Management:</b> Implemented reflections.json as a data store with
+                                Python save_entry.py for adding entries programmatically</li>
+                            <li><b>Frontend-Backend Communication:</b> Used JavaScript fetch() API to load JSON data
+                                from backend and dynamically render reflections in the PWA</li>
+                            <li><b>Advanced Features Development:</b> Built filtering system by category, statistics
+                                dashboard, and CSV export functionality for enhanced user experience</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>Key Insights</h3>
+                        <p>This week marked a critical shift in my understanding of web application architecture.
+                            Previously, I viewed frontend and backend as separate entities. Now I understand how they
+                            work together seamlessly. The power of combining static file storage (JSON) with server-side
+                            scripting (Python) enables sophisticated data management without complex database systems.
+                            The JSON format's simplicity and JavaScript's native support for it create an elegant
+                            solution for full-stack development on modest scales.</p>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>Technical Implementation</h3>
+                        <p>I created a comprehensive reflection management system with three key components: First, the
+                            Python backend (save_entry.py) uses json module to load existing data, append new
+                            reflections with timestamps and categories, and save updated data. Second, the frontend
+                            (reflections.html) fetches the JSON file asynchronously and parses it for DOM rendering.
+                            Third, the JavaScript layer implements interactive features including category filtering,
+                            statistics calculation, and CSV export. The system gracefully handles edge cases like
+                            missing files, invalid JSON, and network errors.</p>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>Features Implemented</h3>
+                        <ul class="reflection-list">
+                            <li><b>Reflection Display Page:</b> Beautiful card-based layout with color-coded categories
+                                (Learning, Insight, Challenge, General)</li>
+                            <li><b>Category Filtering:</b> Dynamic filter buttons that allow users to view reflections
+                                by category or all entries</li>
+                            <li><b>Statistics Dashboard:</b> Real-time calculations showing total reflections, unique
+                                categories, longest entry, and average entry length</li>
+                            <li><b>CSV Export:</b> Download reflections as a spreadsheet with date, category, and full
+                                text for external analysis</li>
+                            <li><b>Responsive Design:</b> Mobile-optimized interface with smooth animations and
+                                touch-friendly interactions</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>Answers to Reflection Questions</h3>
+                        <div
+                            style="background: var(--accent-lavender); padding: 15px; border-radius: 8px; margin-top: 10px;">
+                            <p><b>Q1: How is storing data in a JSON file different from using browser storage?</b></p>
+                            <p>JSON file storage persists on the server/backend side and can be modified by server-side
+                                scripts like Python. Browser storage (localStorage, sessionStorage) is client-side only
+                                and limited to 5-10MB per domain. JSON files allow structured, portable data that can be
+                                shared, backed up, and manipulated programmatically. Browser storage is ideal for user
+                                preferences, while JSON files enable collaborative data management.</p>
+                        </div>
+                        <div
+                            style="background: var(--accent-mint); padding: 15px; border-radius: 8px; margin-top: 10px;">
+                            <p><b>Q2: How did you use Python to create or update your JSON file?</b></p>
+                            <p>I created save_entry.py that imports the json module and os module. The script loads
+                                existing reflections.json, appends new entries with timestamps and metadata, and writes
+                                the updated data back. Each reflection object contains date (ISO format), text,
+                                category, and unique ID. The script provides an interactive menu for users to add new
+                                reflections or view existing ones (the create and read parts of working with JSON
+                                files from Python).</p>
+                        </div>
+                        <div
+                            style="background: var(--accent-sand); padding: 15px; border-radius: 8px; margin-top: 10px;">
+                            <p><b>Q3: What does your PWA show locally vs on GitHub? Are they the same? Why or why
+                                    not?</b></p>
+                            <p>Locally, the PWA displays all features including dynamically loaded JSON reflections with
+                                real data. On GitHub Pages, users will see the HTML structure and styling, but the JSON
+                                fetch may fail due to CORS policies when loading backend/reflections.json from GitHub.
+                                This limitation demonstrates why full-stack applications often require hosted backends.
+                                However, the GitHub version still displays the page structure and is fully functional
+                                for learning demonstration purposes. Static JSON files work, but dynamic Python updates
+                                won't execute in GitHub's static hosting environment.</p>
+                        </div>
+                        <div
+                            style="background: var(--accent-blue); padding: 15px; border-radius: 8px; margin-top: 10px;">
+                            <p><b>Q4: What extra feature did you add to your PWA using the JSON file, and why?</b></p>
+                            <p>I implemented a CSV export feature that allows users to download their reflections as a
+                                spreadsheet. This feature adds significant value because: (1) it enables data
+                                portability and archival, (2) users can import data into analysis tools or documentation
+                                platforms, (3) it demonstrates advanced JavaScript concepts like blob creation and
+                                download triggering. I also built a comprehensive statistics dashboard that calculates
+                                metrics from the JSON data in real-time, providing users with insights about their
+                                reflection patterns and writing habits. Both features enhance the PWA's utility beyond
+                                simple display functionality.</p>
+                        </div>
+
+                        <div class="entry-section">
+                            <h3>Challenges & Solutions</h3>
+                            <ul class="reflection-list">
+                                <li><b>CORS Issues:</b> Initially faced cross-origin errors when testing locally. Solved
+                                    by running a local Python server (python -m http.server) instead of using file://
+                                    protocol</li>
+                                <li><b>JSON Parsing:</b> Implemented try-catch error handling for invalid JSON, ensuring
+                                    graceful degradation when files are corrupted or missing</li>
+                                <li><b>Date Formatting:</b> Created utility functions to parse ISO format dates from
+                                    Python and render them in user-friendly format</li>
+                                <li><b>Data Synchronization:</b> Managed browser caching by implementing refresh button
+                                    to reload JSON data without page refresh</li>
+                            </ul>
+                        </div>
+
+                        <div class="entry-section">
+                            <h3>Professional Growth</h3>
+                            <p>Week 5 represents a major milestone in my development journey. I've transitioned from
+                                frontend-only developer to someone comfortable working across the entire stack.
+                                Understanding how Python generates data, how JSON serves as a universal data format, and
+                                how JavaScript consumes that data provides a foundation for more complex architectures
+                                like REST APIs and microservices. The reflections system demonstrates full-stack
+                                thinking: backend data generation, frontend data consumption, and user interaction
+                                design all working in harmony.</p>
+                        </div>
+                    </div>
+            </article>
+
+            <!-- WEEK 6 ENTRY: Flask Backend Integration -->
+            <article class="week-entry fade-in" style="animation-delay: 0.45s;" data-week="6">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <div class="week-header-left">
+                        <div class="week-badge week-6">Week 6</div>
+                        <h2>Flask Backend Integration & Full-Stack Development</h2>
+                        <p class="entry-date">Posted: November 30, 2025</p>
+
+                        <div class="progress-bar" style="margin-bottom: 20px;">
+                            <div class="progress-fill" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+
+                <div class="entry-content">
+                    <div class="entry-section">
+                        <h3>Learning Objectives Achieved</h3>
+                        <ul class="reflection-list">
+                            <li><b>Flask backend:</b> Built a Flask app that serves the whole site and a small
+                                JSON API for the reflections</li>
+                            <li><b>HTTP methods:</b> A GET route to read the reflections and a POST route to add a
+                                new one</li>
+                            <li><b>Frontend-backend communication:</b> Connected the JavaScript frontend to Flask
+                                using the Fetch API</li>
+                            <li><b>Data persistence:</b> Stored entries in a server-side JSON file so they survive
+                                restarts and look the same on any device</li>
+                            <li><b>Error handling:</b> Handled a missing or empty JSON file so the app doesn't crash
+                                on the first run</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>Understanding Frontend-Backend Connection</h3>
+                        <p>The connection between frontend and backend is vital for creating an application that is
+                            usable over time and across multiple devices. The frontend is the quick, responsive part
+                            that users interact with, but it doesn't have the memory needed for a journal. The backend,
+                            running Flask on the server, is where the application's state and data persistence live. It
+                            guarantees that the entries I write today will still be there a month from now, even if I
+                            use a different laptop. This fundamental separation of concerns—UI on the client and data
+                            management on the server—is what defines a modern web app.</p>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>HTTP Methods in Flask Implementation</h3>
+                        <p>My API uses two HTTP methods:</p>
+                        <ul class="reflection-list">
+                            <li><b>GET /api/reflections:</b> Fetches the current list of reflections. It is safe and
+                                doesn't change anything on the server &mdash; it reads the JSON file and returns it as
+                                JSON to the frontend.</li>
+                            <li><b>POST /api/reflections:</b> Used every time I submit a new entry. The Flask route
+                                reads the JSON from the request, checks the reflection text isn't empty, appends the
+                                new entry to the list, and saves the updated JSON file.</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>Flask vs Browser JSON Storage</h3>
+                        <p>The main difference is that using Flask gives us a secure way to write data. When I read a
+                            JSON file directly in the browser, I'm just getting a local copy of the information; there's
+                            no way to edit the file on the server. If I used a client-side method like localStorage, the
+                            data would be tied only to my specific browser's memory.</p>
+                        <p>Flask mediates the entire process. It hosts the data file, and my JavaScript can send small
+                            API requests to Flask's routes. Flask, being server-side, has the permissions to access the
+                            server's file system, making the necessary changes to the reflections.json file and saving
+                            them securely. This approach enables:</p>
+                        <ul class="reflection-list">
+                            <li>Persistent data storage across devices and browsers</li>
+                            <li>Secure write operations that client-side JavaScript cannot perform</li>
+                            <li>Centralized data management on the server</li>
+                            <li>Ability to share and access data from any device</li>
+                            <li>Proper separation of concerns between presentation and data layers</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>PythonAnywhere Deployment Challenges</h3>
+                        <p>My biggest headache came from an initial data crash during the first run. Since the
+                            reflections.json file didn't exist when I started my web app for the first time, or if it
+                            was empty, my Python code would throw a JSONDecodeError when it tried to load the file
+                            contents. The whole server would crash because it was expecting data and found nothing.</p>
+                        <p>I handled this by updating my Python functions (load_reflections). I wrapped the part that
+                            reads the JSON file in a try...except block. If the JSONDecodeError occurred, instead of
+                            crashing, the function now gracefully returns an empty Python list ([]). This allows the
+                            application to start cleanly and simply create the very first reflection entry without
+                            crashing.</p>
+                        <div
+                            style="background: var(--accent-lavender); padding: 15px; border-radius: 8px; margin-top: 10px;">
+                            <p><b>Solution Code Pattern:</b></p>
+                            <pre
+                                style="background: var(--bg-surface); padding: 10px; border-radius: 4px; overflow-x: auto;"><code>def read_reflections():
+    if not os.path.exists(DATA_FILE):
+        return []
+    try:
+        with open(DATA_FILE, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return []</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>Connecting the Frontend to Flask</h3>
+                        <p>On the reflections page, the form sends a POST request to <b>/api/reflections</b> with the
+                            Fetch API, and the list is loaded with a GET to the same route. I deliberately used
+                            <b>relative URLs</b> (just <code>/api/reflections</code>) instead of a full
+                            <code>http://localhost:8000</code> address. That one decision meant the same JavaScript
+                            works on my laptop and on PythonAnywhere, because it always talks to whichever server is
+                            hosting the page.</p>
+                        <p>I also added a small offline fallback: if the request fails or the browser is offline, the
+                            new entry is saved to <code>localStorage</code> and re-sent automatically when the
+                            connection comes back, so nothing is lost.</p>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>Technical Architecture</h3>
+                        <p>The Flask application keeps the presentation and the data cleanly separated:</p>
+                        <ul class="reflection-list">
+                            <li><b>API routes:</b> `/api/reflections` &mdash; GET to read, POST to add</li>
+                            <li><b>Data layer:</b> a JSON file with small helper functions (read_reflections and
+                                write_reflections) for loading and saving</li>
+                            <li><b>Frontend layer:</b> plain JavaScript using the Fetch API for the requests</li>
+                            <li><b>Error handling:</b> the POST returns a clear JSON error and a 400 status if the
+                                reflection text is empty</li>
+                            <li><b>Static files:</b> Flask also serves the pages, CSS, JS, icons, manifest and the
+                                service worker, so the whole app runs from one place</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>Key Learnings & Insights</h3>
+                        <ul class="reflection-list">
+                            <li><b>RESTful Design:</b> Using appropriate HTTP methods makes the API intuitive and
+                                follows web standards</li>
+                            <li><b>Error Handling:</b> Graceful error handling prevents application crashes and provides
+                                better user experience</li>
+                            <li><b>Data Persistence:</b> Server-side storage ensures data survives browser sessions and
+                                device changes</li>
+                            <li><b>Separation of Concerns:</b> Frontend handles UI/UX, backend handles data
+                                management—clean architecture</li>
+                            <li><b>API Design:</b> Well-structured API routes make the application maintainable and
+                                extensible</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>Project Completion Reflection</h3>
+                        <p>Week 6 represents the culmination of my full-stack development journey. Starting from static
+                            HTML/CSS, progressing through JavaScript interactivity, implementing PWA features, and now
+                            completing the stack with Flask backend integration, I've built a fully functional web
+                            application. The experience of connecting frontend and backend, handling HTTP methods
+                            correctly, and managing data persistence has given me a comprehensive understanding of
+                            modern web development architecture. This foundation prepares me for more advanced concepts
+                            like databases, authentication, and cloud deployment.</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- WEEK 7 ENTRY: PWA Implementation -->
+            <article class="week-entry fade-in" style="animation-delay: 0.5s;" data-week="7">
+                <div class="week-header" onclick="toggleWeek(this)">
+                    <div class="week-header-left">
+                        <div class="week-badge week-7">Week 7</div>
+                        <h2>Progressive Web Apps (PWA) Implementation</h2>
+                        <p class="entry-date">Posted: December 10, 2025</p>
+
+                        <div class="progress-bar" style="margin-bottom: 20px;">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <span class="accordion-icon">▼</span>
+                </div>
+
+                <div class="entry-content">
+                    <div class="entry-section">
+                        <h3>Learning Objectives Achieved</h3>
+                        <ul class="reflection-list">
+                            <li><b>PWA Core Concepts:</b> Understood the three pillars of PWA: Secure Contexts (HTTPS),
+                                Service Workers, and Manifest files</li>
+                            <li><b>Offline Capabilities:</b> Implemented Service Workers to cache assets and handle
+                                network failures gracefully</li>
+                            <li><b>Installability:</b> Configured Web App Manifest to allow users to install the web app
+                                on their home screens</li>
+                            <li><b>Mobile Experience:</b> Enhanced the application to feel like a native app with splash
+                                screens, icons, and standalone display mode</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>Reflection Questions</h3>
+                        <div
+                            style="background: var(--accent-lavender); padding: 15px; border-radius: 8px; margin-top: 10px;">
+                            <p><b>1. Why is it useful to enhance your Flask app with PWA features?</b></p>
+                            <p>Enhancing the app with PWA features significantly improves user experience and
+                                reliability. It allows the application to be <b>installable</b> on devices (mobile and
+                                desktop), providing a native-app-like feel without the need for an app store. Crucially,
+                                it enables <b>offline access</b>, ensuring users can view their journal entries even
+                                without an internet connection, which is vital for a consistent experience.</p>
+                        </div>
+
+                        <div
+                            style="background: var(--accent-mint); padding: 15px; border-radius: 8px; margin-top: 10px;">
+                            <p><b>2. What did you use to support offline access and dynamic data?</b></p>
+                            <p>I implemented a <b>Service Worker (`sw.js`)</b> to act as a network proxy.
+                            <ul>
+                                <li><b>Static Assets (CSS, JS):</b> Precached during the `install` phase to ensure the
+                                    app shell always loads.</li>
+                                <li><b>Dynamic Data (API):</b> Used a 'Network First, falling back to Cache' strategy
+                                    for API requests (`/api/reflections`). This ensures the user sees the latest data
+                                    when online, but falls back to the last cached version when offline.</li>
+                            </ul>
+                            </p>
+                        </div>
+
+                        <div
+                            style="background: var(--accent-sand); padding: 15px; border-radius: 8px; margin-top: 10px;">
+                            <p><b>3. What extra feature did you add, and why?</b></p>
+                            <p>I added an <b>offline notification banner</b>. This feature detects network status
+                                changes using the `online` and `offline` window events. When the user loses
+                                connectivity, a small notification appears and a status indicator switches to Offline.
+                                This gives immediate, clear feedback about their connection state and about whether new
+                                entries are saving to the server or to the device.</p>
+                        </div>
+
+                        <div
+                            style="background: var(--accent-blue); padding: 15px; border-radius: 8px; margin-top: 10px;">
+                            <p><b>4. Did you face any challenges deploying your PWA, and how did you solve them?</b></p>
+                            <p>Yes, I faced a few challenges:
+                            <ul>
+                                <li><b>Environment Issues:</b> The `flask` module was missing initially, requiring a
+                                    `pip install flask`.</li>
+                                <li><b>Process Conflicts:</b> The local port `5002` was occupied. I resolved this by
+                                    identifying and killing the zombie process.</li>
+                                <li><b>Service Worker Scope:</b> I realized `sw.js` needs to be served from the root to
+                                    control the whole app. I added a specific Flask route `@app.route('/sw.js')` so it
+                                    is served from the project root at the `/sw.js` URL.</li>
+                            </ul>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="entry-section">
+                        <h3>Enhanced User Experience</h3>
+                        <p>The transformation to PWA brings a new level of polish. Users on Android can now tap "Add to
+                            Home Screen" and get an icon that launches the journal in fullscreen mode, removing browser
+                            URL bars. The offline support means the journal is always accessible for reading, even on a
+                            flaky subway connection. This bridges the gap between the reach of the web and the
+                            reliability of native apps.</p>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Askal Thapa | Computer Science Student | UCA Farnham</p>
+            <p class="footer-subtitle">Week 6: Flask Backend Integration & Full-Stack Development</p>
+        </div>
+    </footer>
+
+    <script>
+        // Accordion toggle function for week entries
+        function toggleWeek(header) {
+            const article = header.closest('.week-entry');
+            const allArticles = document.querySelectorAll('.week-entry');
+
+            // Close all other articles
+            allArticles.forEach(art =>{
+                if (art !== article && art.classList.contains('active')) {
+                    art.classList.remove('active');
+                }
+            });
+
+            // Toggle current article
+            article.classList.toggle('active');
+        }
+    </script>
+
+    <script src="js/browser.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
