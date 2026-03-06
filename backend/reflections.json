@@ -1,0 +1,38 @@
+[
+  {
+    "date": "2025-11-23T14:00:00",
+    "text": "First time storing data with Python and JSON. I wrote a small script that reads and writes reflections.json, which gave me a simple, file-based way to keep entries without setting up a full database.",
+    "category": "Learning",
+    "id": 1
+  },
+  {
+    "date": "2025-11-30T16:40:00",
+    "text": "Moved the backend from Python's built-in http.server to Flask. Routes like /api/reflections are much clearer than parsing the request path by hand, and returning data with jsonify() keeps everything tidy.",
+    "category": "Learning",
+    "id": 2
+  },
+  {
+    "date": "2025-12-07T11:20:00",
+    "text": "The service worker took a few attempts before offline mode actually worked. Versioning the cache name and deleting old caches on activate was the part I had missed, and once fixed the pages loaded with no connection.",
+    "category": "Challenge",
+    "id": 3
+  },
+  {
+    "date": "2025-12-07T18:05:00",
+    "text": "My earlier version only worked on my laptop because the fetch calls pointed at http://localhost:8000. Switching to relative URLs like /api/reflections meant the exact same code ran on PythonAnywhere over HTTPS.",
+    "category": "Insight",
+    "id": 4
+  },
+  {
+    "date": "2026-07-06T03:50:53.708Z",
+    "text": "test",
+    "category": "General",
+    "id": 1783309853708
+  },
+  {
+    "date": "2026-07-06T06:51:53.232Z",
+    "text": "afafaf",
+    "category": "General",
+    "id": 1783320713235
+  }
+]
