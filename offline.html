@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1B1712">
+    <title>Offline — Learning Journal</title>
+    <link rel="icon" href="/images/favicon-32.png" type="image/png">
+    <style>
+        /* Inline so this page still renders even if the stylesheet or fonts
+           somehow aren't cached. Colours match the "Field Notebook" theme. */
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Newsreader", Georgia, "Times New Roman", serif;
+            background: #16130E;
+            color: #ECE3D2;
+            text-align: center;
+            padding: 24px;
+        }
+        .card { max-width: 440px; }
+        .mark {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 24px;
+            display: block;
+            border-radius: 3px;
+        }
+        .eyebrow {
+            font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: #E0623D;
+            margin-bottom: 10px;
+        }
+        h1 {
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 1.9rem;
+            font-weight: 600;
+            margin: 0 0 12px;
+            color: #F5EEDF;
+        }
+        p { color: #A99E89; line-height: 1.6; margin: 0 0 26px; font-size: 1.08rem; }
+        a.btn {
+            display: inline-block;
+            background: #E0623D;
+            color: #16130E;
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 3px;
+            font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img class="mark" src="/images/icon-192.png" alt="Journal icon">
+        <div class="eyebrow">No connection</div>
+        <h1>You're offline</h1>
+        <p>
+            This page hasn't been saved for offline use yet. Any reflection you
+            write while offline is kept on your device and syncs automatically
+            once you're back online.
+        </p>
+        <a class="btn" href="/">Back to home</a>
+    </div>
+</body>
+</html>
