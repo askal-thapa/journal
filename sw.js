@@ -1,7 +1,7 @@
 // Service worker for the Learning Journal PWA.
 // Bump the version string whenever cached files change — the activate step
 // then deletes the old cache so users get the new files.
-const CACHE_VERSION = 'journal-v3';
+const CACHE_VERSION = 'journal-v4';
 const FONT_CACHE = 'journal-fonts';
 
 // The "app shell": everything the UI needs to load and render offline.

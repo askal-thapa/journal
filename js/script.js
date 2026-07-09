@@ -291,7 +291,20 @@ function updateTime() {
     timeElements.forEach(el => el.textContent = timeString);
 }
 
-// Location functionality with caching
+// Region from the browser's timezone — no GPS, no permission prompt, works offline.
+// e.g. "Asia/Kathmandu" -> "Kathmandu", "Europe/London" -> "London".
+function regionFromTimezone() {
+    try {
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone; // "Continent/City"
+        if (!tz || !tz.includes('/')) return tz || '';
+        const city = tz.split('/').pop().replace(/_/g, ' ');
+        return city;
+    } catch (e) {
+        return '';
+    }
+}
+
+// Location display — region/country only, so it never asks for GPS permission.
 async function updateLocation() {
     const locationElements = document.querySelectorAll('.nav-location-display');
     if (locationElements.length === 0) return;
@@ -300,66 +313,34 @@ async function updateLocation() {
         locationElements.forEach(el => el.textContent = text);
     }
 
-    // Check if we have cached location data
+    // 1. Show the timezone-based region immediately (instant, offline, no prompt).
+    const tzRegion = regionFromTimezone();
+    if (tzRegion) setLocationText(tzRegion);
+
+    // 2. If we already refined it recently, keep the cached "City, Country".
     const cachedLocation = localStorage.getItem('cachedLocation');
     const cacheTimestamp = localStorage.getItem('locationCacheTime');
     const now = Date.now();
-    const cacheExpiry = 10 * 60 * 1000; // 10 minutes in milliseconds
+    const cacheExpiry = 24 * 60 * 60 * 1000; // 24 hours
 
-    // If we have cached data and it's not expired, use it
     if (cachedLocation && cacheTimestamp && (now - parseInt(cacheTimestamp)) < cacheExpiry) {
         setLocationText(cachedLocation);
         return;
     }
 
-    if (!navigator.geolocation) {
-        setLocationText('Location not supported');
-        return;
-    }
-
+    // 3. When online, quietly refine to "City, Country" via IP (still no permission prompt).
     try {
-        // Get user's position
-        const position = await new Promise((resolve, reject) => {
-            navigator.geolocation.getCurrentPosition(resolve, reject, {
-                timeout: 10000,
-                enableHighAccuracy: false
-            });
-        });
-
-        const { latitude, longitude } = position.coords;
-
-        // Use reverse geocoding to get city name
-        // Using a free service that doesn't require API key
-        const response = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`);
+        const response = await fetch('https://ipapi.co/json/');
         const data = await response.json();
+        const parts = [data.city, data.country_name].filter(Boolean);
+        const label = parts.join(', ') || tzRegion || 'Unknown location';
+        setLocationText(label);
 
-        const city = data.city || data.locality || data.countryName || 'Unknown location';
-        setLocationText(city);
-
-        // Cache the location data
-        localStorage.setItem('cachedLocation', city);
+        localStorage.setItem('cachedLocation', label);
         localStorage.setItem('locationCacheTime', now.toString());
-
-    } catch (error) {
-        console.log('Location error:', error);
-        // Fallback to IP-based location
-        try {
-            const response = await fetch('https://ipapi.co/json/');
-            const data = await response.json();
-            const city = data.city || 'Unknown location';
-            setLocationText(city);
-
-            // Cache the fallback location too
-            localStorage.setItem('cachedLocation', city);
-            localStorage.setItem('locationCacheTime', now.toString());
-        } catch (ipError) {
-            const fallbackLocation = 'London, UK'; // Default fallback
-            setLocationText(fallbackLocation);
-
-            // Cache even the fallback
-            localStorage.setItem('cachedLocation', fallbackLocation);
-            localStorage.setItem('locationCacheTime', now.toString());
-        }
+    } catch (ipError) {
+        // Offline or blocked — the timezone region shown in step 1 is good enough.
+        if (!tzRegion) setLocationText('Location unavailable');
     }
 }
 
