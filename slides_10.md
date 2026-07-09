@@ -54,7 +54,7 @@
 - **Workflow:**
     1. **Offline:** User saves entry -> Save to `localStorage` -> Notify "Saved Locally".
     2. **Online:** Detect connection -> Background Sync -> Push to Server.
-- **Result:** Seamless user experience regardless of connectivity.
+- **Result:** The app still works even with a bad connection or none at all.
 
 ## Slide 8: Feature Spotlights
 - **Dynamic Navigation:**
@@ -76,7 +76,7 @@
 
 ## Slide 10: Conclusion & Q&A
 - **Summary:**
-    - Built a robust Full-Stack PWA from scratch.
+    - Built a complete full-stack PWA from scratch.
     - Mastered Frontend, Backend, and Offline-First paradigms.
 - **Reflection:** A rewarding journey turning static pages into a native-like app.
 - **Links:** [Live Demo] | [GitHub Repo]

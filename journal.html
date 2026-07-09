@@ -69,7 +69,7 @@
                             <li>Understood the structure and expectations of the Mobile App Development course</li>
                             <li>Set up development environment with VS Code and Git</li>
                             <li>Created GitHub repository and deployed first version</li>
-                            <li>Established project folder structure following best practices</li>
+                            <li>Set up a sensible project folder structure to keep files organised</li>
                         </ul>
                     </div>
 
@@ -122,7 +122,7 @@
                         <ul class="reflection-list">
                             <li>Mastered semantic HTML5 for better accessibility and SEO</li>
                             <li>Implemented mobile-first responsive design approach</li>
-                            <li>Created sophisticated CSS Grid and Flexbox layouts</li>
+                            <li>Built the page layouts using CSS Grid and Flexbox</li>
                             <li>Built custom theme system with CSS variables</li>
                         </ul>
                     </div>
@@ -142,9 +142,9 @@
 
                     <div class="entry-section">
                         <h3>Technical Progress</h3>
-                        <p>Successfully implemented a complete responsive design system with CSS custom properties for
-                            theming. The layout adapts seamlessly from mobile (320px) to desktop (1920px) with intuitive
-                            breakpoints. Achieved 95/100 on Google Lighthouse performance metrics.</p>
+                        <p>I built a responsive design system using CSS custom properties for theming. The layout
+                            adapts from mobile (320px) up to desktop (1920px) using a few breakpoints, and I got
+                            95/100 on Google Lighthouse for performance.</p>
                     </div>
 
                     <div class="entry-section">
@@ -183,7 +183,7 @@
                         <ul class="reflection-list">
                             <li>Mastered DOM manipulation using modern JavaScript APIs</li>
                             <li>Implemented event handling and delegation patterns</li>
-                            <li>Utilized localStorage for persistent user preferences</li>
+                            <li>Used localStorage to remember user preferences between visits</li>
                             <li>Built dynamic theme toggle system with smooth transitions</li>
                         </ul>
                     </div>
@@ -290,11 +290,10 @@
 
                     <div class="entry-section">
                         <h3>Course Completion Reflection</h3>
-                        <p>Over these four weeks, I transformed from a developer with basic web knowledge to someone
-                            comfortable implementing sophisticated, production-ready web applications. The progression
-                            from static HTML/CSS to dynamic JavaScript to advanced PWA features mirrored real-world
-                            development complexity. Most importantly, I learned that continuous learning and attention
-                            to user experience are paramount in modern web development.</p>
+                        <p>Over these four weeks I went from only knowing the basics of the web to being comfortable
+                            building a proper web app. Moving from static HTML/CSS, to JavaScript, and then to the PWA
+                            features felt like a realistic version of how projects actually grow. The main thing I took
+                            away is that you have to keep learning and keep thinking about the person using the app.</p>
                     </div>
                 </div>
             </article>
@@ -331,17 +330,16 @@
 
                     <div class="entry-section">
                         <h3>Key Insights</h3>
-                        <p>This week marked a critical shift in my understanding of web application architecture.
-                            Previously, I viewed frontend and backend as separate entities. Now I understand how they
-                            work together seamlessly. The power of combining static file storage (JSON) with server-side
-                            scripting (Python) enables sophisticated data management without complex database systems.
-                            The JSON format's simplicity and JavaScript's native support for it create an elegant
-                            solution for full-stack development on modest scales.</p>
+                        <p>This week really changed how I think about web application structure. Before, I saw the
+                            frontend and backend as two separate things. Now I understand how they work together.
+                            Combining simple JSON file storage with a bit of Python on the server let me manage data
+                            without setting up a full database. Because JSON is easy to read and JavaScript works with
+                            it directly, it was a good fit for a small project like this.</p>
                     </div>
 
                     <div class="entry-section">
                         <h3>Technical Implementation</h3>
-                        <p>I created a comprehensive reflection management system with three key components: First, the
+                        <p>I built a reflection management system with three main parts: First, the
                             Python backend (save_entry.py) uses json module to load existing data, append new
                             reflections with timestamps and categories, and save updated data. Second, the frontend
                             (reflections.html) fetches the JSON file asynchronously and parses it for DOM rendering.
@@ -402,14 +400,13 @@
                         <div
                             style="background: var(--accent-blue); padding: 15px; border-radius: 8px; margin-top: 10px;">
                             <p><b>Q4: What extra feature did you add to your PWA using the JSON file, and why?</b></p>
-                            <p>I implemented a CSV export feature that allows users to download their reflections as a
-                                spreadsheet. This feature adds significant value because: (1) it enables data
-                                portability and archival, (2) users can import data into analysis tools or documentation
-                                platforms, (3) it demonstrates advanced JavaScript concepts like blob creation and
-                                download triggering. I also built a comprehensive statistics dashboard that calculates
-                                metrics from the JSON data in real-time, providing users with insights about their
-                                reflection patterns and writing habits. Both features enhance the PWA's utility beyond
-                                simple display functionality.</p>
+                            <p>I added a CSV export feature that lets the user download their reflections as a
+                                spreadsheet. I picked this because (1) it makes the data easy to back up and move
+                                somewhere else, (2) the user can open it in Excel or Google Sheets, and (3) it gave me a
+                                chance to try creating a Blob and triggering a download in JavaScript. I also added a
+                                small statistics section that works out numbers from the JSON data as the page loads, so
+                                the user can see things like how many reflections they have written. Both of these make
+                                the app do a bit more than just list the entries.</p>
                         </div>
 
                         <div class="entry-section">
@@ -522,10 +519,9 @@
                             was empty, my Python code would throw a JSONDecodeError when it tried to load the file
                             contents. The whole server would crash because it was expecting data and found nothing.</p>
                         <p>I handled this by updating my Python functions (load_reflections). I wrapped the part that
-                            reads the JSON file in a try...except block. If the JSONDecodeError occurred, instead of
-                            crashing, the function now gracefully returns an empty Python list ([]). This allows the
-                            application to start cleanly and simply create the very first reflection entry without
-                            crashing.</p>
+                            reads the JSON file inside a try...except block. If a JSONDecodeError happens, instead of
+                            crashing, the function just returns an empty Python list ([]). That way the app can start up
+                            fine and create the very first reflection entry without falling over.</p>
                         <div
                             style="background: var(--accent-lavender); padding: 15px; border-radius: 8px; margin-top: 10px;">
                             <p><b>Solution Code Pattern:</b></p>
@@ -587,13 +583,12 @@
 
                     <div class="entry-section">
                         <h3>Project Completion Reflection</h3>
-                        <p>Week 6 represents the culmination of my full-stack development journey. Starting from static
-                            HTML/CSS, progressing through JavaScript interactivity, implementing PWA features, and now
-                            completing the stack with Flask backend integration, I've built a fully functional web
-                            application. The experience of connecting frontend and backend, handling HTTP methods
-                            correctly, and managing data persistence has given me a comprehensive understanding of
-                            modern web development architecture. This foundation prepares me for more advanced concepts
-                            like databases, authentication, and cloud deployment.</p>
+                        <p>Week 6 pulls everything together. I started with plain HTML and CSS, added JavaScript for
+                            interactivity, then the PWA features, and finally the Flask backend, and now I have a web
+                            app that actually works end to end. Connecting the frontend to the backend, using the right
+                            HTTP methods and saving data properly has given me a much clearer understanding of how a
+                            web app fits together. It also makes me feel ready to move on to things like databases,
+                            logins and deploying to the cloud.</p>
                     </div>
                 </div>
             </article>

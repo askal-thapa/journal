@@ -5,7 +5,7 @@ A Progressive Web App that documents my Mobile Application Development coursewor
 offline use, a web manifest so it can be installed like a native app, and a small
 canvas game as the creative extension.
 
-**Live demo:** https://askalthapa.pythonanywhere.com *(update with your URL)*
+**Live demo:** https://askal.pythonanywhere.com
 **Source:** https://github.com/askal-thapa/journal
 
 ---
@@ -76,32 +76,32 @@ work together.
 
 ---
 
-## Deploy to PythonAnywhere
+## How I deployed it (PythonAnywhere)
 
-GitHub Pages **cannot** run this app because it can't host a Python/Flask server.
-PythonAnywhere can, and it gives you HTTPS for free (which a PWA requires).
+I chose PythonAnywhere because GitHub Pages can't run a Flask server, and I get
+HTTPS for free, which the PWA needs to install and register the service worker.
 
-1. Create a free account at [pythonanywhere.com](https://www.pythonanywhere.com/).
-2. **Get the code onto the server.** Open a *Bash console* and clone your repo:
+These are the steps I followed:
+
+1. Made a free account at [pythonanywhere.com](https://www.pythonanywhere.com/).
+2. Opened a Bash console and cloned the project:
    ```bash
    git clone https://github.com/askal-thapa/journal.git
    ```
-   (or upload the folder via the *Files* tab).
-3. **Create the web app.** Go to the **Web** tab → *Add a new web app* →
-   *Manual configuration* → *Python 3.10*.
-4. **Point the WSGI file at the app.** On the Web tab, click the link to the WSGI
-   file (e.g. `/var/www/askalthapa_pythonanywhere_com_wsgi.py`), delete its
-   contents, and paste the code from [`pythonanywhere_wsgi.py`](pythonanywhere_wsgi.py).
-   Change the username and folder path to match yours.
-5. **Reload** the web app (green button) and visit
-   `https://<your-username>.pythonanywhere.com`.
+3. Installed Flask on the server:
+   ```bash
+   pip install --user -r journal/requirements.txt
+   ```
+4. On the **Web** tab I added a new web app with *Manual configuration → Python 3.10*.
+5. Opened the WSGI file it generated (`/var/www/askal_pythonanywhere_com_wsgi.py`),
+   cleared it, and pasted the contents of [`pythonanywhere_wsgi.py`](pythonanywhere_wsgi.py)
+   so it imports my Flask app from `/home/Askal/journal`.
+6. Hit **Reload** and opened https://askal.pythonanywhere.com.
 
-That's it — Flask serves the pages, the icons, `manifest.json` and `sw.js`, so
-install and offline mode work over HTTPS. No static-file mapping is required.
-
-> Note: reflections are saved to `backend/reflections.json` on the server, so new
-> entries survive restarts. The browser-side location lookup runs in the visitor's
-> browser, so it isn't affected by PythonAnywhere's free-tier proxy.
+Flask serves the pages, icons, `manifest.json` and `sw.js` itself, so I didn't need
+to set up any static-file mapping. Reflections are written to
+`backend/reflections.json` on the server, so entries I add stay after a reload. The
+location lookup runs in the visitor's browser, so the free-tier proxy doesn't affect it.
 
 ---
 

@@ -334,9 +334,8 @@
                             }
                         } catch (error) {
                             console.error('Save error details:', error);
-                            // Only save locally if it's a genuine network error, otherwise alerting the user is better?
-                            // But for PWA resilience, we often save locally. 
-                            // Let's inform the user WHY.
+                            // If the server call fails, keep the entry in localStorage
+                            // so nothing is lost, and tell the user what happened.
                             alert(`Server save failed: ${error.message}. Saving locally.`);
                             saveLocally(newEntry);
                         }

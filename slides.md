@@ -136,7 +136,7 @@
 - **Lighthouse Score:** 90+ across Performance, Accessibility, Best Practices, SEO.
 
 ## Slide 17: User Experience (UX) Enhancements
-- **Micro-interactions:** Button hover lifts, seamless transitions.
+- **Micro-interactions:** Button hover lifts, smooth transitions.
 - **Feedback:** Toast notifications for actions (Save, Sync, Error).
 - **Empty States:** Friendly messages when no data is present.
 - **Loading States:** Spinners while fetching data.
@@ -153,7 +153,7 @@
     - Mastered the core web trio (HTML/CSS/JS).
     - Learned Backend logic (Python/API).
     - Understood the "Offline-First" paradigm.
-- **Reflection:** A challenging but rewarding journey from static pages to a robust app.
+- **Reflection:** Hard at times but rewarding, going from static pages to a full working app.
 
 ## Slide 20: Q&A
 - **Thank You!**
