@@ -76,6 +76,20 @@ def add_reflection():
     return jsonify({"status": "success", "message": "Reflection saved", "entry": entry}), 201
 
 
+@app.route("/api/reflections/<reflection_id>", methods=["DELETE"])
+def delete_reflection(reflection_id):
+    """Delete one reflection by its id. Ids are compared as strings so both the
+    old integer ids and the newer timestamp ids match regardless of type."""
+    items = read_reflections()
+    remaining = [r for r in items if str(r.get("id")) != str(reflection_id)]
+
+    if len(remaining) == len(items):
+        return jsonify({"status": "error", "message": "Reflection not found"}), 404
+
+    write_reflections(remaining)
+    return jsonify({"status": "success", "message": "Reflection deleted"})
+
+
 @app.route("/sw.js")
 def service_worker():
     # Serve the service worker from the site root with no-cache so a new version

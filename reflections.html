@@ -204,13 +204,42 @@
                         <article class="reflection-card ${category}" style="animation-delay: ${index * 0.05}s">
                             <div class="reflection-header">
                                 <div class="reflection-date">${formattedDate}</div>
-                                <span class="reflection-category ${category}">${reflection.category || 'General'}</span>
+                                <div class="reflection-header-right">
+                                    <span class="reflection-category ${category}">${reflection.category || 'General'}</span>
+                                    <button class="reflection-delete" title="Delete reflection"
+                                        aria-label="Delete reflection"
+                                        onclick="deleteReflection('${reflection.id}', this)">&times;</button>
+                                </div>
                             </div>
                             <div class="reflection-text">${escapeHtml(reflection.text || '')}</div>
                         </article>
                     `;
                 })
                 .join('');
+        }
+
+        /**
+         * Delete a reflection by id (calls the Flask DELETE route), then refresh.
+         */
+        async function deleteReflection(id, btn) {
+            if (!confirm('Delete this reflection? This cannot be undone.')) return;
+
+            if (btn) { btn.disabled = true; }
+
+            try {
+                const response = await fetch(`/api/reflections/${encodeURIComponent(id)}`, {
+                    method: 'DELETE'
+                });
+
+                if (!response.ok) throw new Error(`Server returned ${response.status}`);
+
+                showNotification('Reflection deleted.');
+                await loadReflections(); // Refresh list, stats and filters
+            } catch (error) {
+                console.error('Delete error:', error);
+                alert(`Could not delete reflection: ${error.message}`);
+                if (btn) { btn.disabled = false; }
+            }
         }
 
         /**

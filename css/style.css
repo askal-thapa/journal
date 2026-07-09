@@ -1804,6 +1804,12 @@ footer {
     font-weight: 400;
 }
 
+.reflection-header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 .reflection-category {
     display: inline-block;
     padding: 4px 12px;
@@ -1811,6 +1817,33 @@ footer {
     font-size: 0.8rem;
     font-weight: 500;
     color: white;
+}
+
+.reflection-delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.reflection-delete:hover {
+    background: #EF4444;
+    color: white;
+}
+
+.reflection-delete:disabled {
+    opacity: 0.5;
+    cursor: default;
 }
 
 .reflection-category.learning {
