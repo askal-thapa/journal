@@ -369,8 +369,10 @@ body {
 /* Copy Button Enhancement */
 .entry-copy-btn {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 18px;
+    /* Sit to the LEFT of the accordion ▼ icon so the two don't overlap. */
+    right: 56px;
+    z-index: 2;
     background: var(--accent-primary);
     color: var(--bg-surface);
     border: none;
